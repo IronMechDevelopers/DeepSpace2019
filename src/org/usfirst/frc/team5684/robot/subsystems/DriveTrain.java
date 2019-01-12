@@ -7,12 +7,16 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
+import org.usfirst.frc.team5684.robot.ADIS16448_IMU;
+import org.usfirst.frc.team5684.robot.Robot;
 import org.usfirst.frc.team5684.robot.RobotMap;
 import org.usfirst.frc.team5684.robot.commands.SimpleDrive;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -20,14 +24,40 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class DriveTrain extends Subsystem {
 	 //Put methods for controlling this subsystem
 	 //here. Call these from Commands.
+	private Encoder leftEncoder;
+	private Encoder rightEncoder;
+	double maxPeriod = .1;
+	int minRate = 10;
+	int samplesToAverage = 7;
+	public static final double WHEEL_DIAMETER = 6;
 	private Victor left;
 	private Victor right;
 	private DifferentialDrive drive;
+	public static ADIS16448_IMU gyro;
 
-	public void DriveTrain() {
+	public DriveTrain() {
 		left = new Victor(RobotMap.LEFTWHEELMOTOR);
 		right = new Victor(RobotMap.RIGHTWHEELMOTOR);
 		drive = new DifferentialDrive(left, right);
+		leftEncoder = new Encoder(RobotMap.LEFTWHEELENCODERA, RobotMap.LEFTWHEELENCODERB, true,
+				Encoder.EncodingType.k4X);
+		leftEncoder.setMaxPeriod(maxPeriod);
+		leftEncoder.setMinRate(minRate);
+		leftEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseLeft);
+		leftEncoder.setSamplesToAverage(samplesToAverage);
+		leftEncoder.setReverseDirection(true);
+		rightEncoder = new Encoder(RobotMap.RIGHTWHEELENCODERA, RobotMap.RIGHTWHEELENCODERB, true,
+				Encoder.EncodingType.k4X);
+		rightEncoder.setMaxPeriod(maxPeriod);
+		rightEncoder.setMinRate(minRate);
+		rightEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseRight);
+		rightEncoder.setSamplesToAverage(samplesToAverage);
+		rightEncoder.setReverseDirection(false);
+		leftEncoder.reset();
+		rightEncoder.reset();
+		
+		gyro = new ADIS16448_IMU();
+		
 	}
 
 	@Override
@@ -38,7 +68,10 @@ public class DriveTrain extends Subsystem {
 	
 	
 	public void simpleDrive(double forward, double turn) {
-		drive.arcadeDrive(forward, turn, true);
+		
+	// inverted forward because motor is also inverted
+		drive.arcadeDrive(-1*forward, turn, true);
+		
 	}
 
 	public void stop() {
@@ -48,4 +81,42 @@ public class DriveTrain extends Subsystem {
 	public void turn(double d) {
 		drive.arcadeDrive(0, d, true);
 	}
+	public double getLeftDistance() {
+		return leftEncoder.getDistance();
+	}
+
+	public double getRightDistance() {
+		return rightEncoder.getDistance();
+	}
+
+	public double getLeftSpeed() {
+		return leftEncoder.getRate();
+	}
+
+	public double getRightSpeed() {
+		return rightEncoder.getRate();
+	}
+	public Encoder getLeftEncoder() {
+		return leftEncoder;
+	}
+
+	public Encoder getRightEncoder() {
+		return rightEncoder;
+	}
+	
+	public void calibrateGyro() {
+		gyro.calibrate();
+	}
+
+	public ADIS16448_IMU getGyro() {
+		return gyro;
+	}
+	
+	public void resetGyro() {
+		if (gyro != null) {
+			gyro.reset();
+		}
+		//SmartDashboard.putNumber("Angle x: ", Robot.driveTrain.getGyro().getAngleX());
+	}
+
 }

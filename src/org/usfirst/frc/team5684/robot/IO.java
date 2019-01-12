@@ -7,13 +7,25 @@
 
 package org.usfirst.frc.team5684.robot;
 
+import org.usfirst.frc.team5684.robot.commands.GyroCalibration;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
+
 public class IO {
-	public static final Joystick leftStick = new Joystick(0);
-	public static final Joystick rightStick = new Joystick(1);
+	public static final Joystick leftStick = new Joystick(1);
+	public static final Joystick rightStick = new Joystick(0);
+	private Button gyroCalib = new JoystickButton(leftStick, 1);
+	
+	public IO() {
+	gyroCalib.whenPressed(new GyroCalibration());
+	}
+	
 }

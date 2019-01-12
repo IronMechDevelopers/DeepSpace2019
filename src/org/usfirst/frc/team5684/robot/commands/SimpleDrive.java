@@ -10,8 +10,6 @@ package org.usfirst.frc.team5684.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
 import org.usfirst.frc.team5684.robot.IO;
 import org.usfirst.frc.team5684.robot.Robot;
 
@@ -39,8 +37,9 @@ public class SimpleDrive extends Command {
 // Called repeatedly when this Command is scheduled to run
 @Override
  protected void execute() {
- double leftInput = left.getX(GenericHID.Hand.kLeft);
- double rightInput = right.getY(GenericHID.Hand.kRight);
+	// inverting because motor is inverted
+	double leftInput = left.getRawAxis(1);
+	double rightInput = right.getRawAxis(0);
  Robot.driveTrain.simpleDrive(leftInput, rightInput);
  }
 
