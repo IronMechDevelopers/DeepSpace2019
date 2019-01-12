@@ -118,5 +118,10 @@ public class DriveTrain extends Subsystem {
 		}
 		//SmartDashboard.putNumber("Angle x: ", Robot.driveTrain.getGyro().getAngleX());
 	}
+	
+	public void resetEncoder() { 
+		leftEncoder.reset();
+		rightEncoder.reset();
+	}
 
 }
