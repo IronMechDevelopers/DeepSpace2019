@@ -5,19 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5684.robot.subsystems;
+package org.usfirst.frc.team5684.robot;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
- * An example subsystem.  You can replace me with your own Subsystem.
+ * This class is the glue that binds the controls on the physical operator
+ * interface to the commands and command groups that allow control of the robot.
  */
-public class ExampleSubsystem extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
-	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
-	}
+public class IO {
+	public static final Joystick leftStick = new Joystick(0);
+	public static final Joystick rightStick = new Joystick(1);
 }
