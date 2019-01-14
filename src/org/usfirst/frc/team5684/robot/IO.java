@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5684.robot;
 
 import org.usfirst.frc.team5684.robot.commands.DriveStraightWithGyro;
+import org.usfirst.frc.team5684.robot.commands.FullSpeed;
 import org.usfirst.frc.team5684.robot.commands.GyroCalibration;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -25,10 +26,12 @@ public class IO {
 	public static final Joystick rightStick = new Joystick(0);
 	private Button gyroCalib = new JoystickButton(leftStick, 1);
 	private Button driveStraight = new JoystickButton(leftStick, 6);
+	private Button driveFullSpeed = new JoystickButton(leftStick, 9);
 	
 	public IO() {
 	gyroCalib.whenPressed(new GyroCalibration());
 	driveStraight.whenPressed(new DriveStraightWithGyro(Math.PI * RobotMap.WHEELDIAMETER));
+	driveFullSpeed.whileHeld(new FullSpeed());
 	}
 	
 	

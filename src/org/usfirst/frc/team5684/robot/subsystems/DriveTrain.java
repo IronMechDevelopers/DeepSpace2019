@@ -73,6 +73,13 @@ public class DriveTrain extends Subsystem {
 		drive.arcadeDrive(-1*forward, turn, true);
 		
 	}
+	public void goToSpeed(double d)
+	{
+		// d is between -1 and 1
+		// TODO this needs to be changed to accept real speed not motor speed
+		left.set(d);
+		right.set(d);
+	}
 
 	public void stop() {
 		drive.arcadeDrive(0, 0, true);
@@ -104,6 +111,12 @@ public class DriveTrain extends Subsystem {
 		return rightEncoder;
 	}
 	
+	public Victor getRight() {
+		return right;
+	}
+	public Victor getLeft() {
+		return left;
+	}
 	public void calibrateGyro() {
 		gyro.calibrate();
 	}

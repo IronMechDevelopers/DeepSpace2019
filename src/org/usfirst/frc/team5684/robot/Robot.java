@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5684.robot;
 
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5684.robot.subsystems.RightSide;
 import org.usfirst.frc.team5684.robot.IO;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -28,6 +29,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
 	
 	public static IO m_oi;
+	public static RightSide rightWheels=new RightSide();
 	
 
 	Command m_autonomousCommand;
