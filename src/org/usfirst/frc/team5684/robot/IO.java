@@ -31,7 +31,7 @@ public class IO {
 	public IO() {
 	gyroCalib.whenPressed(new GyroCalibration());
 	driveStraight.whenPressed(new DriveStraightWithGyro(Math.PI * RobotMap.WHEELDIAMETER));
-	driveFullSpeed.whileHeld(new FullSpeed());
+	driveFullSpeed.whenPressed(new FullSpeed(Math.PI * RobotMap.WHEELDIAMETER));
 	}
 	
 	

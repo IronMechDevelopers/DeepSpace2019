@@ -10,6 +10,8 @@ package org.usfirst.frc.team5684.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team5684.robot.IO;
 import org.usfirst.frc.team5684.robot.Robot;
 
@@ -20,6 +22,7 @@ public class SimpleDrive extends Command {
 	
 	private Joystick left;
 	private Joystick right;
+	private double DEADZONE=.1;
 
 	public SimpleDrive() {
 
@@ -40,6 +43,38 @@ public class SimpleDrive extends Command {
 	// inverting because motor is inverted
 	double leftInput = left.getRawAxis(1);
 	double rightInput = right.getRawAxis(0);
+	if(leftInput>0 && leftInput>DEADZONE)
+	{
+		leftInput=Robot.map(leftInput,DEADZONE,1,0,1);
+	}
+	else if(leftInput<0 && leftInput<-1*DEADZONE)
+	{
+		leftInput=Robot.map(leftInput,-1*DEADZONE,-1,0,-1);
+	}
+	else if(Math.abs(leftInput)<DEADZONE)
+	{
+		leftInput=0;
+	}
+	double currentSpeed = (Robot.driveTrain.getRightEncoder().getRate()+Robot.driveTrain.getLeftEncoder().getRate())/2.0;
+	double maxTurn=1;
+	SmartDashboard.putNumber("currentSpeed ", currentSpeed);
+	if(currentSpeed>=60)
+	{
+		maxTurn=.5;
+	}
+	if(rightInput>0 && rightInput>DEADZONE)
+	{
+		rightInput=Robot.map(rightInput,DEADZONE,1,0,maxTurn);
+	}
+	else if(rightInput<0 && rightInput<-1*DEADZONE)
+	{
+		rightInput=Robot.map(rightInput,-1*DEADZONE,-1,0,-1*maxTurn);
+	}
+	else if(Math.abs(rightInput)<DEADZONE)
+	{
+		rightInput=0;
+	}
+	rightInput *= -1;
  Robot.driveTrain.simpleDrive(leftInput, rightInput);
  
 // System.out.println("Angle X is " + Robot.driveTrain.gyro.getAngleX());

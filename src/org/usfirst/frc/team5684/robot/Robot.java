@@ -11,6 +11,7 @@ import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.RightSide;
 import org.usfirst.frc.team5684.robot.IO;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -30,6 +31,8 @@ public class Robot extends TimedRobot {
 	
 	public static IO m_oi;
 	public static RightSide rightWheels=new RightSide();
+	CameraServer server;
+	
 	
 
 	Command m_autonomousCommand;
@@ -44,6 +47,13 @@ public class Robot extends TimedRobot {
 		m_oi = new IO();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putData("RIGHT",rightWheels.getPIDController());
+		//server = CameraServer.getInstance();
+		//server.setQuality(50);
+		//server.startAutomaticCapture("cam0", null);
+		CameraServer.getInstance().startAutomaticCapture();
+		//CameraServer.getInstance().getVideo();
+		//CameraServer.getInstance().putVideo("Blue",640,480);
 	}
 
 	/**
@@ -121,5 +131,33 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	
+	public static double map(double x, double in_min, double in_max, double out_min, double out_max) {
+		boolean negative = x < 0;
+		double newValue = (Math.abs(x) - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+		if (negative) {
+			return -newValue;
+		} else {
+			return newValue;
+		}
+	}
+	
+	public static double limitChange(double old, double newValue, double deltaLimit)
+	{
+		double change = Math.abs(old-newValue);
+		if(change>deltaLimit)
+		{
+			if (old>newValue)
+			{
+				//trying to go down.
+				newValue=old-deltaLimit;
+			}
+			else
+			{
+				newValue=old+deltaLimit;
+			}
+		}
+		return newValue;
 	}
 }

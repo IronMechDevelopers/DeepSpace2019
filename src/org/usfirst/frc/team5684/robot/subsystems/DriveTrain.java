@@ -53,6 +53,8 @@ public class DriveTrain extends Subsystem {
 		rightEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseRight);
 		rightEncoder.setSamplesToAverage(samplesToAverage);
 		rightEncoder.setReverseDirection(false);
+		right.setInverted(true);
+		left.setInverted(true);
 		leftEncoder.reset();
 		rightEncoder.reset();
 		
@@ -70,7 +72,8 @@ public class DriveTrain extends Subsystem {
 	public void simpleDrive(double forward, double turn) {
 		
 	// inverted forward because motor is also inverted
-		drive.arcadeDrive(-1*forward, turn, true);
+	drive.arcadeDrive(forward, turn, true);
+	
 		
 	}
 	public void goToSpeed(double d)
