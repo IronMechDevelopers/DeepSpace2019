@@ -8,8 +8,8 @@
 package org.usfirst.frc.team5684.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import jaci.pathfinder.Trajectory;
-import jaci.pathfinder.followers.EncoderFollower;
+//import jaci.pathfinder.Trajectory;
+//import jaci.pathfinder.followers.EncoderFollower;
 
 public class Follow extends Command {
   private static final int k_ticks_per_rev = 360;
@@ -28,8 +28,6 @@ public class Follow extends Command {
     //right_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".right");
     //m_left_follower=new EncoderFollower(left_trajectory);
     //m_right_follower=new EncoderFollower(right_trajectory);
-    System.out.println("Working Directory = " +
-              System.getProperty("user.dir"));
 
     
   }
