@@ -74,8 +74,9 @@ public class SimpleDrive extends Command {
 	{
 		rightInput=0;
 	}
-	rightInput *= -1;
- Robot.driveTrain.simpleDrive(leftInput, rightInput);
+	leftInput = left.getRawAxis(1);
+	rightInput = right.getRawAxis(0);
+ 	Robot.driveTrain.simpleDrive(-1*leftInput, rightInput);
  
 // System.out.println("Angle X is " + Robot.driveTrain.gyro.getAngleX());
 // System.out.println("Angle Y is " + Robot.driveTrain.gyro.getAngleY());

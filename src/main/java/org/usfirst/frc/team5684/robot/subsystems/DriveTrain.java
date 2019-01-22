@@ -44,21 +44,19 @@ public class DriveTrain extends Subsystem {
 		leftEncoder.setMinRate(minRate);
 		leftEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseLeft);
 		leftEncoder.setSamplesToAverage(samplesToAverage);
-		leftEncoder.setReverseDirection(true);
 		rightEncoder = new Encoder(RobotMap.RIGHTWHEELENCODERA, RobotMap.RIGHTWHEELENCODERB, true,
 				Encoder.EncodingType.k4X);
 		rightEncoder.setMaxPeriod(maxPeriod);
 		rightEncoder.setMinRate(minRate);
 		rightEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseRight);
 		rightEncoder.setSamplesToAverage(samplesToAverage);
-		rightEncoder.setReverseDirection(false);
+		
 		right.setInverted(true);
-		left.setInverted(true);
+		left.setInverted(false);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		
-		
-		
+		rightEncoder.setReverseDirection(true);
+		leftEncoder.setReverseDirection(false);	
 	}
 
 	@Override
@@ -68,26 +66,17 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	
-	public void simpleDrive(double forward, double turn) {
-		
-	// inverted forward because motor is also inverted
-	drive.arcadeDrive(forward, turn, true);
-	
-		
-	}
-	public void goToSpeed(double d)
-	{
-		// d is between -1 and 1
-		// TODO this needs to be changed to accept real speed not motor speed
-		left.set(d);
-		right.set(d);
+	public void simpleDrive(double xSpeed, double zRotation) {
+		drive.arcadeDrive(xSpeed, zRotation);
 	}
 
 	public void setLeftRight(double leftSpeed, double rightSpeed)
 	{
 		left.set(leftSpeed);
 		right.set(rightSpeed);
+
 	}
+
 	public void stop() {
 		drive.arcadeDrive(0, 0, true);
 	}
@@ -136,7 +125,6 @@ public class DriveTrain extends Subsystem {
 		if (gyro != null) {
 			gyro.reset();
 		}
-		//SmartDashboard.putNumber("Angle x: ", Robot.driveTrain.getGyro().getAngleX());
 	}
 	
 	public void resetEncoder() { 

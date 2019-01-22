@@ -11,6 +11,7 @@ import org.usfirst.frc.team5684.robot.commands.Compress;
 import org.usfirst.frc.team5684.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5684.robot.commands.Fire;
 import org.usfirst.frc.team5684.robot.commands.Follow;
+import org.usfirst.frc.team5684.robot.commands.Forward;
 import org.usfirst.frc.team5684.robot.commands.FullSpeed;
 import org.usfirst.frc.team5684.robot.commands.GyroCalibration;
 import org.usfirst.frc.team5684.robot.commands.Withdraw;
@@ -27,11 +28,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class IO {
 	public static final Joystick leftStick = new Joystick(1);
-	public static final Joystick rightStick = new Joystick(0);
+	public static final Joystick rightStick = new Joystick(2);
 	private Button gyroCalib = new JoystickButton(leftStick, 1);
 	private Button driveStraight = new JoystickButton(leftStick, 6);
 	private Button driveFullSpeed = new JoystickButton(leftStick, 9);
 	private Button rad = new JoystickButton(leftStick, 7);
+	private Button rad2 = new JoystickButton(leftStick, 8);
 	private Button leftFire = new JoystickButton(rightStick, 1);
 	private Button fire = new JoystickButton(rightStick, 11);
 	private Button withdraw = new JoystickButton(rightStick, 12);
@@ -43,7 +45,8 @@ public class IO {
 	leftFire.whileHeld(new Compress());
 	fire.whenPressed(new Fire());
 	withdraw.whenPressed(new Withdraw());
-	rad.whenPressed(new Follow());
+	rad.whileHeld(new Forward());
+	rad2.whenPressed(new Follow());
 	}
 	
 	
