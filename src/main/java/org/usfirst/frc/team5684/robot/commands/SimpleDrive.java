@@ -40,7 +40,6 @@ public class SimpleDrive extends Command {
 // Called repeatedly when this Command is scheduled to run
 @Override
  protected void execute() {
-	// inverting because motor is inverted
 	double leftInput = left.getRawAxis(1);
 	double rightInput = right.getRawAxis(0);
 	if(leftInput>0 && leftInput>DEADZONE)
@@ -78,9 +77,6 @@ public class SimpleDrive extends Command {
 	rightInput = right.getRawAxis(0);
  	Robot.driveTrain.simpleDrive(-1*leftInput, rightInput);
  
-// System.out.println("Angle X is " + Robot.driveTrain.gyro.getAngleX());
-// System.out.println("Angle Y is " + Robot.driveTrain.gyro.getAngleY());
-// System.out.println("Angle Z is " + Robot.driveTrain.gyro.getAngleZ() + "\n");
  }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -37,7 +37,11 @@ public class DriveTrain extends Subsystem {
 		gyro = new ADIS16448_IMU();
 		left = new Victor(RobotMap.LEFTWHEELMOTOR);
 		right = new Victor(RobotMap.RIGHTWHEELMOTOR);
+		right.setInverted(true);
+		left.setInverted(false);
 		drive = new DifferentialDrive(left, right);
+
+		
 		leftEncoder = new Encoder(RobotMap.LEFTWHEELENCODERA, RobotMap.LEFTWHEELENCODERB, true,
 				Encoder.EncodingType.k4X);
 		leftEncoder.setMaxPeriod(maxPeriod);
@@ -50,13 +54,13 @@ public class DriveTrain extends Subsystem {
 		rightEncoder.setMinRate(minRate);
 		rightEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseRight);
 		rightEncoder.setSamplesToAverage(samplesToAverage);
+		rightEncoder.setReverseDirection(true);
+		leftEncoder.setReverseDirection(false);
 		
-		right.setInverted(true);
-		left.setInverted(false);
 		leftEncoder.reset();
 		rightEncoder.reset();
-		rightEncoder.setReverseDirection(true);
-		leftEncoder.setReverseDirection(false);	
+		
+			
 	}
 
 	@Override
@@ -125,6 +129,11 @@ public class DriveTrain extends Subsystem {
 		if (gyro != null) {
 			gyro.reset();
 		}
+	}
+
+	public double getAngle()
+	{
+		return gyro.getAngleX();
 	}
 	
 	public void resetEncoder() { 

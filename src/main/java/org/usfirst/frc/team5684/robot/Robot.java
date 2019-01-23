@@ -10,7 +10,6 @@ package org.usfirst.frc.team5684.robot;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
 import org.usfirst.frc.team5684.robot.subsystems.MySolenoid;
-import org.usfirst.frc.team5684.robot.subsystems.RightSide;
 import org.usfirst.frc.team5684.robot.IO;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -30,11 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
-	public static MyCompressor mc;
 	public static IO m_oi;
-	public static RightSide rightWheels=new RightSide();
-	public static MySolenoid ms;
-	CameraServer server;
 	
 	
 
@@ -50,11 +45,7 @@ public class Robot extends TimedRobot {
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		SmartDashboard.putData("RIGHT",rightWheels.getPIDController());
-		mc = new MyCompressor();
-		ms = new MySolenoid();
 		m_oi = new IO();
-		CameraServer.getInstance().startAutomaticCapture();
 
 	}
 
