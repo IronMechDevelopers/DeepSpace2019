@@ -57,6 +57,9 @@ public class SimpleDrive extends Command {
 	double currentSpeed = (Robot.driveTrain.getRightEncoder().getRate()+Robot.driveTrain.getLeftEncoder().getRate())/2.0;
 	double maxTurn=1;
 	SmartDashboard.putNumber("currentSpeed ", currentSpeed);
+	SmartDashboard.putNumber("rightSpeed ", Robot.driveTrain.getRightSpeed());
+	SmartDashboard.putNumber("leftSpeed ", Robot.driveTrain.getLeftSpeed());
+	SmartDashboard.putNumber("currentAngle ", Robot.driveTrain.getAngle());
 	if(currentSpeed>=60)
 	{
 		maxTurn=.5;
@@ -79,7 +82,7 @@ public class SimpleDrive extends Command {
  
  }
 
-// Make this return true when this Command no longer needs to run execute()
+// Make this return true when this Comman no longer needs to run execute()
 @Override
  protected boolean isFinished() {
  return false;

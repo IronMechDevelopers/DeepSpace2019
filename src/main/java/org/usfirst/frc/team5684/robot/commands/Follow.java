@@ -62,15 +62,17 @@ public class Follow extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putNumber("right Speed", Robot.driveTrain.getRightSpeed());
-    SmartDashboard.putNumber("left Speed", Robot.driveTrain.getLeftSpeed());
+   
+    SmartDashboard.putNumber("rightSpeed ", Robot.driveTrain.getRightSpeed());
+    SmartDashboard.putNumber("leftSpeed ", Robot.driveTrain.getLeftSpeed());
+    SmartDashboard.putNumber("currentAngle ", Robot.driveTrain.getAngle());
     double left_speed = m_left_follower.calculate(Robot.driveTrain.getLeftEncoder().get());
     double right_speed = m_right_follower.calculate(Robot.driveTrain.getRightEncoder().get());
     double heading = Robot.driveTrain.getAngle();
     
       
     double desired_heading = Pathfinder.r2d(m_left_follower.getHeading());
-    heading = desired_heading;
+    //heading = desired_heading;
     double heading_difference = Pathfinder.boundHalfDegrees(desired_heading - heading);
     double turn =  0.8 * (-1.0/80.0) * heading_difference;
     Robot.driveTrain.setLeftRight(left_speed + turn,right_speed - turn );

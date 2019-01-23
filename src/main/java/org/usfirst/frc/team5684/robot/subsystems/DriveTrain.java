@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import com.analog.adis16448.frc.ADIS16448_IMU;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -31,10 +29,12 @@ public class DriveTrain extends Subsystem {
 	private Victor left;
 	private Victor right;
 	private DifferentialDrive drive;
-	public static  ADIS16448_IMU gyro;
+	//public static  ADIS16448_IMU gyro;
+	private Gyro gyro;
 
 	public DriveTrain() {
-		gyro = new ADIS16448_IMU();
+		//gyro = new ADIS16448_IMU();
+		gyro = new Gyro(true);
 		left = new Victor(RobotMap.LEFTWHEELMOTOR);
 		right = new Victor(RobotMap.RIGHTWHEELMOTOR);
 		right.setInverted(true);
@@ -121,7 +121,7 @@ public class DriveTrain extends Subsystem {
 		gyro.calibrate();
 	}
 
-	public ADIS16448_IMU getGyro() {
+	public Gyro getGyro() {
 		return gyro;
 	}
 	
