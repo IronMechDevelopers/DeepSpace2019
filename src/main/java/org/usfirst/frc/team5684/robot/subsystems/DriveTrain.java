@@ -37,8 +37,8 @@ public class DriveTrain extends Subsystem {
 		gyro = new Gyro(true);
 		left = new Victor(RobotMap.LEFTWHEELMOTOR);
 		right = new Victor(RobotMap.RIGHTWHEELMOTOR);
-		right.setInverted(true);
-		left.setInverted(false);
+		//right.setInverted(true);
+		//left.setInverted(false);
 		drive = new DifferentialDrive(left, right);
 
 		
