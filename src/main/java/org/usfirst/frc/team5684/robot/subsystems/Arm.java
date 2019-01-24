@@ -8,13 +8,23 @@
 package org.usfirst.frc.team5684.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * Add your docs here.
  */
 public class Arm extends Subsystem {
+  private Victor armMotor;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  public void ArmUp(){
+    armMotor.set(1.0);
+
+  }
+  public void ArmDown(){
+    armMotor.set(-1.0);
+  }
 
   @Override
   public void initDefaultCommand() {

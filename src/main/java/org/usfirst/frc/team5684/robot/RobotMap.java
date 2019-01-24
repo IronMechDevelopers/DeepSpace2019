@@ -32,6 +32,8 @@ public class RobotMap {
 	//Compressor Stuff
 	public static int hatchOpen = 2;
 	public static int hatchClose = 3;
+	public static int flopOpen = 4;
+	public static int flopClose = 5;
 	
 	
 	// CONSTANTS

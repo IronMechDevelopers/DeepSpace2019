@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team5684.robot;
 
+import org.usfirst.frc.team5684.robot.subsystems.Arm;
+import org.usfirst.frc.team5684.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.HatchCollecter;
 
@@ -26,6 +28,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
 	public static HatchCollecter hc = new HatchCollecter();
+	public static BallIntake bi = new BallIntake();
+	public static Arm arm = new Arm();
 	public static IO m_oi;
 	
 	
