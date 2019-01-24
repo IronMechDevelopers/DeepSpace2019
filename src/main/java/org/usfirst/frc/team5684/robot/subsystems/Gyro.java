@@ -7,21 +7,10 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
 import com.analog.adis16448.frc.ADIS16448_IMU;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
@@ -33,7 +22,7 @@ public class Gyro extends Subsystem {
 	// gyro value of 360 is set to correspond to one full revolution
   private static final double kVoltsPerDegreePerSecond = 0.0128;
   private AnalogGyro m_gyro = new AnalogGyro(kGyroPort);
-  public static  ADIS16448_IMU bigGyro;
+  public static ADIS16448_IMU bigGyro;
   // Put methods for controlling this subsystem
   // here. Cal=l these from Commands.
   private boolean isBig;

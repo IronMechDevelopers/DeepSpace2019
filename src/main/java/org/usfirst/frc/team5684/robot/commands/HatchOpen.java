@@ -7,13 +7,9 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
 import org.usfirst.frc.team5684.robot.Robot;
-import org.usfirst.frc.team5684.robot.RobotMap;
-import org.usfirst.frc.team5684.robot.subsystems.HatchCollecter;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 public class HatchOpen extends Command {
   public HatchOpen() {

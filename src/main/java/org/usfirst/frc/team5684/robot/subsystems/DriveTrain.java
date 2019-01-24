@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
