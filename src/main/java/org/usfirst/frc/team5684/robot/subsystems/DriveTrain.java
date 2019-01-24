@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
-import org.usfirst.frc.team5684.robot.subsystems.MySolenoid;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -25,13 +24,12 @@ public class DriveTrain extends Subsystem {
 	 //here. Call these from Commands.
 	private Encoder leftEncoder;
 	private Encoder rightEncoder;
-	double maxPeriod = .1;
-	int minRate = 0;
-	int samplesToAverage = 7;
+	double maxPeriod = .8;
+	int minRate = 8;
+	int samplesToAverage = 10;
 	private VictorSP left;
 	private VictorSP right;
 	private DifferentialDrive drive;
-	//public static  ADIS16448_IMU gyro;
 	private Gyro gyro;
 
 	public DriveTrain() {
@@ -48,13 +46,13 @@ public class DriveTrain extends Subsystem {
 
 		
 		leftEncoder = new Encoder(RobotMap.LEFTWHEELENCODERA, RobotMap.LEFTWHEELENCODERB, true,
-				Encoder.EncodingType.k4X);
+				Encoder.EncodingType.k2X);
 		leftEncoder.setMaxPeriod(maxPeriod);
 		leftEncoder.setMinRate(minRate);
 		leftEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseLeft);
 		leftEncoder.setSamplesToAverage(samplesToAverage);
 		rightEncoder = new Encoder(RobotMap.RIGHTWHEELENCODERA, RobotMap.RIGHTWHEELENCODERB, false,
-				Encoder.EncodingType.k4X);
+				Encoder.EncodingType.k2X);
 		rightEncoder.setMaxPeriod(maxPeriod);
 		rightEncoder.setMinRate(minRate);
 		rightEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseRight);

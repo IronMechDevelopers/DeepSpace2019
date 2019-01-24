@@ -9,8 +9,9 @@ package org.usfirst.frc.team5684.robot;
 
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
-import org.usfirst.frc.team5684.robot.subsystems.MySolenoid;
+import org.usfirst.frc.team5684.robot.subsystems.HatchCollecter;
 import org.usfirst.frc.team5684.robot.IO;
+
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -29,7 +30,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
+	public static HatchCollecter hc = new HatchCollecter();
 	public static IO m_oi;
+	
 	
 	
 

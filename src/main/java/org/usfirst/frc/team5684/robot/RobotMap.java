@@ -37,6 +37,9 @@ public class RobotMap {
 	public static int RIGHTWHEELENCODERA = 1;
 	public static int RIGHTWHEELENCODERB = 2;
 	
+	//Compressor Stuff
+	public static int hatchOpen = 2;
+	public static int hatchClose = 3;
 	
 	
 	// CONSTANTS
@@ -61,8 +64,8 @@ public class RobotMap {
 		SmartDashboard.putNumber("leftTicks", Robot.driveTrain.getLeftEncoder().get());
 		SmartDashboard.putNumber("rightTicks", Robot.driveTrain.getRightEncoder().get());
 
-		SmartDashboard.putNumber("leftDistanec", Robot.driveTrain.getLeftEncoder().getDistance());
-		SmartDashboard.putNumber("rightDistanec", Robot.driveTrain.getRightEncoder().getDistance());
+		SmartDashboard.putNumber("leftDistance", Robot.driveTrain.getLeftEncoder().getDistance());
+		SmartDashboard.putNumber("rightDistance", Robot.driveTrain.getRightEncoder().getDistance());
 	}
 
 }

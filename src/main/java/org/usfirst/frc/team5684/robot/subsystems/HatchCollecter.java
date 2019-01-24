@@ -6,41 +6,35 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team5684.robot.subsystems;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class MySolenoid extends Subsystem {
+public class HatchCollecter extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  private DoubleSolenoid hatch = new DoubleSolenoid(RobotMap.hatchOpen, RobotMap.hatchClose);
 
-  DoubleSolenoid exampleDouble;
+  public void open() {
 
-  public MySolenoid()
-  {
-    exampleDouble = new DoubleSolenoid(3,2);
+    hatch.set(DoubleSolenoid.Value.kForward);
+  }
+  public void close() {
+    hatch.set(DoubleSolenoid.Value.kReverse);
   }
 
+  public void kill()
+  {
+    hatch.set(DoubleSolenoid.Value.kOff);
+  }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-  }
-
-  public void open()
-  {
-    exampleDouble.set(DoubleSolenoid.Value.kForward);
-  }
-  public void close()
-  {
-    exampleDouble.set(DoubleSolenoid.Value.kReverse);
-  }
-  public void kill()
-  {
-    exampleDouble.set(DoubleSolenoid.Value.kOff);
   }
 }
