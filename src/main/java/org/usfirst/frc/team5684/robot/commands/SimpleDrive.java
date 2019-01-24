@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5684.robot.IO;
 import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
 /**
  * An example command. You can replace me with your own command.
@@ -40,6 +41,7 @@ public class SimpleDrive extends Command {
 // Called repeatedly when this Command is scheduled to run
 @Override
  protected void execute() {
+	 RobotMap.updateStats();
 	double leftInput = left.getRawAxis(1);
 	double rightInput = right.getRawAxis(0);
 	if(leftInput>0 && leftInput>DEADZONE)
@@ -56,10 +58,8 @@ public class SimpleDrive extends Command {
 	}
 	double currentSpeed = (Robot.driveTrain.getRightEncoder().getRate()+Robot.driveTrain.getLeftEncoder().getRate())/2.0;
 	double maxTurn=1;
-	SmartDashboard.putNumber("currentSpeed ", currentSpeed);
-	SmartDashboard.putNumber("rightSpeed ", Robot.driveTrain.getRightSpeed());
-	SmartDashboard.putNumber("leftSpeed ", Robot.driveTrain.getLeftSpeed());
-	SmartDashboard.putNumber("currentAngle ", Robot.driveTrain.getAngle());
+
+
 	if(currentSpeed>=60)
 	{
 		maxTurn=.5;
@@ -78,7 +78,7 @@ public class SimpleDrive extends Command {
 	}
 	leftInput = left.getRawAxis(1);
 	rightInput = right.getRawAxis(0);
- 	Robot.driveTrain.simpleDrive(-1*leftInput, rightInput);
+	 Robot.driveTrain.simpleDrive(-1*leftInput, rightInput);
  
  }
 

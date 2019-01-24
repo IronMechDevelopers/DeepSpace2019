@@ -8,16 +8,19 @@
 package org.usfirst.frc.team5684.robot.commands;
 
 import org.usfirst.frc.team5684.robot.Robot;
-import org.usfirst.frc.team5684.robot.RobotMap;
+import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
+import org.usfirst.frc.team5684.robot.subsystems.MySolenoid;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Forward extends Command {
-  public Forward() {
+public class Fire extends Command {
+  public Fire() {
     // Use requires() here to declare subsystem dependencies
+    
+    
     // eg. requires(chassis);
-    requires(Robot.driveTrain);
   }
 
   // Called just before this Command runs the first time
@@ -28,9 +31,9 @@ public class Forward extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.setLeftRight(.25,.25);
-    //Robot.driveTrain.simpleDrive(.5,0);
-    RobotMap.updateStats();
+    
+    
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,13 +45,11 @@ public class Forward extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.driveTrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
   }
 }

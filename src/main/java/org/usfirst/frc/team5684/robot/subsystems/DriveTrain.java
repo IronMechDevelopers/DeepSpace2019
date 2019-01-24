@@ -11,9 +11,11 @@ import org.usfirst.frc.team5684.robot.RobotMap;
 import org.usfirst.frc.team5684.robot.commands.SimpleDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
+import org.usfirst.frc.team5684.robot.subsystems.MySolenoid;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -24,10 +26,10 @@ public class DriveTrain extends Subsystem {
 	private Encoder leftEncoder;
 	private Encoder rightEncoder;
 	double maxPeriod = .1;
-	int minRate = 10;
+	int minRate = 0;
 	int samplesToAverage = 7;
-	private Victor left;
-	private Victor right;
+	private VictorSP left;
+	private VictorSP right;
 	private DifferentialDrive drive;
 	//public static  ADIS16448_IMU gyro;
 	private Gyro gyro;
@@ -35,11 +37,14 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		//gyro = new ADIS16448_IMU();
 		gyro = new Gyro(true);
-		left = new Victor(RobotMap.LEFTWHEELMOTOR);
-		right = new Victor(RobotMap.RIGHTWHEELMOTOR);
-		//right.setInverted(true);
-		//left.setInverted(false);
+		left = new VictorSP(RobotMap.LEFTWHEELMOTOR);
+		right = new VictorSP(RobotMap.RIGHTWHEELMOTOR);
+		right.setInverted(true);
+		left.setInverted(false);
 		drive = new DifferentialDrive(left, right);
+		drive.setRightSideInverted(false);
+		
+		
 
 		
 		leftEncoder = new Encoder(RobotMap.LEFTWHEELENCODERA, RobotMap.LEFTWHEELENCODERB, true,
@@ -48,14 +53,12 @@ public class DriveTrain extends Subsystem {
 		leftEncoder.setMinRate(minRate);
 		leftEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseLeft);
 		leftEncoder.setSamplesToAverage(samplesToAverage);
-		rightEncoder = new Encoder(RobotMap.RIGHTWHEELENCODERA, RobotMap.RIGHTWHEELENCODERB, true,
+		rightEncoder = new Encoder(RobotMap.RIGHTWHEELENCODERA, RobotMap.RIGHTWHEELENCODERB, false,
 				Encoder.EncodingType.k4X);
 		rightEncoder.setMaxPeriod(maxPeriod);
 		rightEncoder.setMinRate(minRate);
 		rightEncoder.setDistancePerPulse(RobotMap.distancePerWheelPulseRight);
 		rightEncoder.setSamplesToAverage(samplesToAverage);
-		rightEncoder.setReverseDirection(true);
-		leftEncoder.setReverseDirection(false);
 		
 		leftEncoder.reset();
 		rightEncoder.reset();
@@ -111,10 +114,10 @@ public class DriveTrain extends Subsystem {
 		return rightEncoder;
 	}
 	
-	public Victor getRight() {
+	public VictorSP getRight() {
 		return right;
 	}
-	public Victor getLeft() {
+	public VictorSP getLeft() {
 		return left;
 	}
 	public void calibrateGyro() {
@@ -139,6 +142,10 @@ public class DriveTrain extends Subsystem {
 	public void resetEncoder() { 
 		leftEncoder.reset();
 		rightEncoder.reset();
+	}
+	public void open() {
+		
+
 	}
 
 }
