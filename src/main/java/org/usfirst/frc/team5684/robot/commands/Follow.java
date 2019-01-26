@@ -69,6 +69,9 @@ public class Follow extends Command {
     SmartDashboard.putNumber("left_speed", left_speed);
     SmartDashboard.putNumber("right_speed", right_speed);
 
+    SmartDashboard.putNumber("left_ratio", Robot.driveTrain.getLeftSpeed()/left_speed);
+    SmartDashboard.putNumber("right_ratio", Robot.driveTrain.getRightDistance()/right_speed);
+
     double heading = Robot.driveTrain.getAngle();
       
     double desired_heading = Pathfinder.r2d(m_left_follower.getHeading());
