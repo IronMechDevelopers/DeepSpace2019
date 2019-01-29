@@ -7,11 +7,13 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5684.robot.Robot;
 
-public class ArmDown extends Command {
-  public ArmDown() {
+import edu.wpi.first.wpilibj.command.Command;
+
+
+public class FourBarUp extends Command {
+  public FourBarUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,7 +26,7 @@ public class ArmDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arm.ArmDown();
+    Robot.fourBar.FourBarUp();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,11 +38,13 @@ public class ArmDown extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.fourBar.stopFourBar();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    this.end();
   }
 }

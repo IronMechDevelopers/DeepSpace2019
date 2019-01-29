@@ -20,6 +20,8 @@ public class RobotMap {
 	// PWM Ports
 	public static int RIGHTWHEELMOTOR = 1;
 	public static int LEFTWHEELMOTOR = 0 ;
+	public static int FOURBAR = 3;
+	public static int BALLINTAKE=2;
 	
 	
 	

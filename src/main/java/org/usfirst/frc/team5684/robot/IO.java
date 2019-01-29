@@ -7,9 +7,13 @@
 
 package org.usfirst.frc.team5684.robot;
 
+import org.usfirst.frc.team5684.robot.commands.FourBarUp;
+import org.usfirst.frc.team5684.robot.commands.BallIn;
+import org.usfirst.frc.team5684.robot.commands.BallOut;
 import org.usfirst.frc.team5684.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5684.robot.commands.Follow;
 import org.usfirst.frc.team5684.robot.commands.Forward;
+import org.usfirst.frc.team5684.robot.commands.FourBarDown;
 import org.usfirst.frc.team5684.robot.commands.GyroCalibration;
 import org.usfirst.frc.team5684.robot.commands.HatchOpen;
 import org.usfirst.frc.team5684.robot.commands.HatchClose;
@@ -33,8 +37,10 @@ public class IO {
 	private Button forward = new JoystickButton(leftStick, 7);
 	private Button follow = new JoystickButton(leftStick, 8);
 	private Button leftFire = new JoystickButton(rightStick, 1);
-	private Button hatchOpen = new JoystickButton(leftStick, 1);
-	private Button hatchClose = new JoystickButton(rightStick, 1);
+	private Button armUp = new JoystickButton(leftStick, 1);
+	private Button armDown = new JoystickButton(rightStick, 1);
+	private Button ballIn = new JoystickButton(rightStick,5);
+	private Button ballOut = new JoystickButton(rightStick,3);
 
 	
 	public IO() {
@@ -42,8 +48,10 @@ public class IO {
 	driveStraight.whenPressed(new DriveStraightWithGyro(Math.PI * RobotMap.WHEELDIAMETER));
 	forward.whileHeld(new Forward());
 	follow.whenPressed(new Follow());
-	hatchOpen.whenPressed(new HatchOpen());
-	hatchClose.whenPressed(new HatchClose());
+	armUp.whileHeld(new FourBarUp());
+	armDown.whileHeld(new FourBarDown());
+	ballIn.whileHeld(new BallIn());
+	ballOut.whileHeld(new BallOut());
 	
 	}
 	

@@ -7,12 +7,11 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Victor;
-import org.usfirst.frc.team5684.robot.subsystems.MyCompressor;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
@@ -22,8 +21,14 @@ public class BallIntake extends Subsystem {
     private DoubleSolenoid flopper;
     
 
+    public BallIntake()
+    {
+      ballMotor = new Victor(RobotMap.BALLINTAKE);
+      ballMotor.setInverted(!ballMotor.getInverted());
+    }
     public void FlopIn() 
     {
+      
       flopper.set(DoubleSolenoid.Value.kForward);
     }
     
@@ -35,12 +40,17 @@ public class BallIntake extends Subsystem {
     
     public void BallIn()
     {
-      ballMotor.set(1.0);
+      ballMotor.set(.25);
     }
     
     public void BallOut() 
     {
-      ballMotor.set(-1.0);
+      ballMotor.set(-1);
+    }
+
+    public void BallStop()
+    {
+      ballMotor.set(0);
     }
     
     public void kill()
