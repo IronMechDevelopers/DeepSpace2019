@@ -8,31 +8,29 @@
 package org.usfirst.frc.team5684.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Victor;
-
 import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
 
 /**
  * Add your docs here.
  */
 public class FourBar extends Subsystem {
-  private Victor fourBarMotor;
+  private Spark fourBarMotor;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public FourBar()
   {
-    fourBarMotor = new Victor(RobotMap.FOURBAR);
+    fourBarMotor = new Spark(RobotMap.FOURBAR);
   }
   public void FourBarUp(){
-    
-    fourBarMotor.set(.25);
-
+    fourBarMotor.set(0.50);
   }
+
   public void FourBarDown(){
-    fourBarMotor.set(-.25);
+    fourBarMotor.set(-0.75);
   }
 
   public void stopFourBar()

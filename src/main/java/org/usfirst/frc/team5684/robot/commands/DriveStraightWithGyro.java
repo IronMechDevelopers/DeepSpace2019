@@ -30,7 +30,6 @@ public class DriveStraightWithGyro extends Command {
 	
 		Robot.driveTrain.resetEncoder();
 		Robot.driveTrain.resetGyro();
-		this.distance = distance;
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -7,6 +7,10 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
+import com.analog.adis16448.frc.ADIS16448_IMU;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.SPI;
 import org.usfirst.frc.team5684.robot.RobotMap;
 import org.usfirst.frc.team5684.robot.commands.SimpleDrive;
 
@@ -14,6 +18,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -29,11 +34,17 @@ public class DriveTrain extends Subsystem {
 	private VictorSP left;
 	private VictorSP right;
 	private DifferentialDrive drive;
-	private Gyro gyro;
+	private static final double kVoltsPerDegreePerSecond = 0.0128;
+	private static final int kGyroPort = 0;
+	private AnalogGyro mini_gyro = new AnalogGyro(kGyroPort);
+	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+
 
 	public DriveTrain() {
-		//gyro = new ADIS16448_IMU();
-		gyro = new Gyro(true);
+		imu.calibrate();
+		mini_gyro.setSensitivity(kVoltsPerDegreePerSecond);
+		mini_gyro.calibrate();
+
 		left = new VictorSP(RobotMap.LEFTWHEELMOTOR);
 		right = new VictorSP(RobotMap.RIGHTWHEELMOTOR);
 		right.setInverted(true);
@@ -118,22 +129,28 @@ public class DriveTrain extends Subsystem {
 		return left;
 	}
 	public void calibrateGyro() {
-		gyro.calibrate();
+		imu.calibrate();
 	}
 
-	public Gyro getGyro() {
-		return gyro;
+	public ADIS16448_IMU getGyro() {
+		return imu;
 	}
 	
 	public void resetGyro() {
-		if (gyro != null) {
-			gyro.reset();
+		if (imu != null) {
+			imu.reset();
 		}
 	}
 
 	public double getAngle()
 	{
-		return gyro.getAngleX();
+		SmartDashboard.putNumber("TIME", System.currentTimeMillis());
+		SmartDashboard.putNumber("MINI", mini_gyro.getAngle());
+		SmartDashboard.putNumber("BIG", imu.getAngle());
+		SmartDashboard.putNumber("BIGX", imu.getAngleX());
+		SmartDashboard.putNumber("BIGY", imu.getAngleY());
+		SmartDashboard.putNumber("BIGZ", imu.getAngleZ());
+		return mini_gyro.getAngle();
 	}
 	
 	public void resetEncoder() { 
