@@ -13,6 +13,8 @@ import org.usfirst.frc.team5684.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5684.robot.commands.Forward;
 import org.usfirst.frc.team5684.robot.commands.FourBarDown;
 import org.usfirst.frc.team5684.robot.commands.FourBarUp;
+import org.usfirst.frc.team5684.robot.commands.HatchDown;
+import org.usfirst.frc.team5684.robot.commands.HatchUp;
 import org.usfirst.frc.team5684.robot.commands.LightOff;
 import org.usfirst.frc.team5684.robot.commands.LightOn;
 
@@ -41,6 +43,8 @@ public class IO {
 	private Button ballOut = new JoystickButton(rightStick,3);
 	private Button lightOn = new JoystickButton(leftStick, 11);
 	private Button lightOff = new JoystickButton(leftStick, 10);
+	private Button hatchDown = new JoystickButton(coStick, 4);
+	private Button hatchUp = new JoystickButton(coStick, 6);
 
 	
 	public IO() {
@@ -53,6 +57,8 @@ public class IO {
 	ballOut.whileHeld(new BallOut());
 	lightOn.whileHeld(new LightOn());
 	lightOff.whileHeld(new LightOff());
+	hatchDown.whileHeld(new HatchDown());
+	hatchUp.whileHeld(new HatchUp());
 	}
 	
 	

@@ -20,6 +20,7 @@ public class RobotMap {
 	// PWM Ports
 	public static final int FOURBAR = 3;
 	public static final int BALLINTAKE=2;
+	public static final int HATCH = 1;
 
 	//CAN ID's
 	public static final int RIGHTMASTER = 0;
@@ -35,20 +36,17 @@ public class RobotMap {
 	public static  final int LEFTWHEELENCODERB = 4;
 	public static  final int RIGHTWHEELENCODERA = 1;
 	public static final  int RIGHTWHEELENCODERB = 2;
-	
-	//Compressor Stuff
-	public static  final int hatchOpen = 2;
-	public static  final int hatchClose = 3;
-	public static  final int flopOpen = 4;
-	public static  final int flopClose = 5;
+	public static final  int FORBARENCODERA = 5;
+	public static final  int FORBARENCODERB = 6;
 	
 	
 	// CONSTANTS
-	public static final double FEET = 1;
+	public static final double FEET = 1.0;
 	public static final double INCHES = 1.0/12.0;
 	public static final double WHEELDIAMETER = 6 * INCHES;
-	public static int pulsePerRevolutionLeft = 250;
+	public static int pulsePerRevolutionLeft = 3600;
 	public static int pulsePerRevolutionRight = 360;
+	public static int pulsePerRevolutionFourBar = 20;
 	public static final double distancePerWheelPulseLeft = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionLeft;
 	public static final double distancePerWheelPulseRight = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionRight;
 	public static final double WHEELROTATION = Math.PI * WHEELDIAMETER;
@@ -57,6 +55,7 @@ public class RobotMap {
 	public static void updateStats()
 	{
 		double currentSpeed = (Robot.driveTrain.getLeftSpeed()+ Robot.driveTrain.getRightSpeed())/2.0;
+		
 		SmartDashboard.putNumber("currentSpeed", currentSpeed);
 		SmartDashboard.putNumber("rightSpeed", Robot.driveTrain.getRightSpeed());
 		SmartDashboard.putNumber("leftSpeed", Robot.driveTrain.getLeftSpeed());
@@ -67,6 +66,7 @@ public class RobotMap {
 
 		SmartDashboard.putNumber("leftDistance", Robot.driveTrain.getLeftEncoder().getDistance());
 		SmartDashboard.putNumber("rightDistance", Robot.driveTrain.getRightEncoder().getDistance());
+		SmartDashboard.putNumber("fourBar", Robot.fourBar.readEncoder());
 	}
 
 }

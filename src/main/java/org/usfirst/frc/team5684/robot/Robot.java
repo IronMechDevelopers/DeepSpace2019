@@ -10,6 +10,7 @@ package org.usfirst.frc.team5684.robot;
 import org.usfirst.frc.team5684.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.FourBar;
+import org.usfirst.frc.team5684.robot.subsystems.HatchCollector;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
 	public static BallIntake bi = new BallIntake();
 	public static FourBar fourBar = new FourBar();
+	public static HatchCollector hatch = new HatchCollector();
 	public static IO m_oi;
 	
 	

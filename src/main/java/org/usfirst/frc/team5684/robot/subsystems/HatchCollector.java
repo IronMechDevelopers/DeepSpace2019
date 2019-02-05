@@ -8,44 +8,34 @@
 package org.usfirst.frc.team5684.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team5684.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
-
+import edu.wpi.first.wpilibj.Victor;
+import org.usfirst.frc.team5684.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class FourBar extends Subsystem {
-  private Spark fourBarMotor;
-  private Encoder enc;
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+public class HatchCollector extends Subsystem {
+private Spark hatchMotor;
 
-  public FourBar()
-  {
-    fourBarMotor = new Spark(RobotMap.FOURBAR);
-    enc = new Encoder(RobotMap.FORBARENCODERA, RobotMap.FORBARENCODERB, true,
-    Encoder.EncodingType.k4X);
-  }
-  public void FourBarUp(){
-    fourBarMotor.set(0.50);
+
+  public HatchCollector() {
+
+    hatchMotor = new Spark(RobotMap.HATCH);
   }
 
-  public void FourBarDown(){
-    fourBarMotor.set(-0.75);
-  }
+  public void HatchUp() {
 
-  public void stopFourBar()
-  {
-    fourBarMotor.set(0);
+    hatchMotor.set(.25);
   }
+  public void HatchDown() {
 
-  public double readEncoder()
-  {
-    return enc.getDistance();
+    hatchMotor.set(-.25);
   }
+  public void HatchStop() {
 
+    hatchMotor.set(0);
+  }
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
