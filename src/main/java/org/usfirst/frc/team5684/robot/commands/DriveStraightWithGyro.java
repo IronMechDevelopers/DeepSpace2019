@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5684.robot.commands;
 
 import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -34,11 +35,7 @@ public class DriveStraightWithGyro extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		SmartDashboard.putNumber("LeftWheels", Robot.driveTrain.getLeftEncoder().getDistance());
-		SmartDashboard.putNumber("RightWheels", Robot.driveTrain.getRightEncoder().getDistance());
-		SmartDashboard.putNumber("X: ", Robot.driveTrain.getGyro().getAngleX());
-		SmartDashboard.putNumber("Y: ", Robot.driveTrain.getGyro().getAngleY());
-		SmartDashboard.putNumber("Z: ", Robot.driveTrain.getGyro().getAngleZ());
+		RobotMap.updateStats();
 		double angle = -1 * Robot.driveTrain.getGyro().getAngleZ();
 		if (distance >= 0) {
 

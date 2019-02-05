@@ -10,14 +10,13 @@ package org.usfirst.frc.team5684.robot;
 import org.usfirst.frc.team5684.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.FourBar;
-import org.usfirst.frc.team5684.robot.subsystems.HatchCollecter;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,7 +27,6 @@ import edu.wpi.first.wpilibj.CameraServer;
  */
 public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
-	public static HatchCollecter hc = new HatchCollecter();
 	public static BallIntake bi = new BallIntake();
 	public static FourBar fourBar = new FourBar();
 	public static IO m_oi;

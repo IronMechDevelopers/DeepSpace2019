@@ -8,52 +8,72 @@
 package org.usfirst.frc.team5684.robot.subsystems;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.SPI;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import org.usfirst.frc.team5684.robot.RobotMap;
 import org.usfirst.frc.team5684.robot.commands.SimpleDrive;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.RemoteFeedbackDevice;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.SensorTerm;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FollowerType;
+import com.ctre.phoenix.motorcontrol.DemandType;
 
+// import com.ctre.phoenix.motorcontroller.*;
+// import com.ctre.phoenix.motorcontroller.can.*;
 /**
  * An example subsystem. You can replace me with your own Subsystem.
  */
 public class DriveTrain extends Subsystem {
-	 //Put methods for controlling this subsystem
-	 //here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 	private Encoder leftEncoder;
 	private Encoder rightEncoder;
 	double maxPeriod = .8;
 	int minRate = 8;
 	int samplesToAverage = 10;
-	private VictorSP left;
-	private VictorSP right;
 	private DifferentialDrive drive;
 	private static final double kVoltsPerDegreePerSecond = 0.0128;
 	private static final int kGyroPort = 0;
-	private AnalogGyro mini_gyro = new AnalogGyro(kGyroPort);
-	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+	//private AnalogGyro mini_gyro = new AnalogGyro(kGyroPort);
+	//public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+	private VictorSPX leftMaster;
+	private VictorSPX leftSlave;
+	private VictorSPX rightMaster;
+	private VictorSPX rightSlave;
+	
 
 
 	public DriveTrain() {
-		imu.calibrate();
-		mini_gyro.setSensitivity(kVoltsPerDegreePerSecond);
-		mini_gyro.calibrate();
+		//imu.calibrate();
+		//mini_gyro.setSensitivity(kVoltsPerDegreePerSecond);
+		//mini_gyro.calibrate();
 
-		left = new VictorSP(RobotMap.LEFTWHEELMOTOR);
-		right = new VictorSP(RobotMap.RIGHTWHEELMOTOR);
-		right.setInverted(true);
-		left.setInverted(false);
-		drive = new DifferentialDrive(left, right);
-		drive.setRightSideInverted(false);
-		
-		
+		rightMaster= new VictorSPX(RobotMap.RIGHTMASTER);
+		rightSlave= new VictorSPX(RobotMap.RIGHTSLAVE);
+		rightMaster.configFactoryDefault();
+		rightSlave.follow(rightMaster);
 
+		leftMaster= new VictorSPX(RobotMap.LEFTMASTER);
+		leftSlave= new VictorSPX(RobotMap.LEFTSLAVE);
+		leftMaster.configFactoryDefault();
+
+		rightMaster.setInverted(true);
+		rightSlave.setInverted(true);
+
+		leftMaster.setNeutralMode(NeutralMode.Brake);
+		rightMaster.setNeutralMode(NeutralMode.Brake);
+
+		leftSlave.follow(leftMaster);
 		
 		leftEncoder = new Encoder(RobotMap.LEFTWHEELENCODERA, RobotMap.LEFTWHEELENCODERB, true,
 				Encoder.EncodingType.k2X);
@@ -82,18 +102,20 @@ public class DriveTrain extends Subsystem {
 	
 	
 	public void simpleDrive(double xSpeed, double zRotation) {
-		drive.arcadeDrive(xSpeed, zRotation);
+		leftMaster.set(ControlMode.PercentOutput,xSpeed+zRotation);
+		rightMaster.set(ControlMode.PercentOutput,xSpeed-zRotation);
 	}
 
 	public void setLeftRight(double leftSpeed, double rightSpeed)
 	{
-		left.set(leftSpeed);
-		right.set(rightSpeed);
+		leftMaster.set(ControlMode.PercentOutput,leftSpeed);
+		rightMaster.set(ControlMode.PercentOutput,rightSpeed);
 
 	}
 
 	public void stop() {
-		drive.arcadeDrive(0, 0, true);
+		leftMaster.set(ControlMode.PercentOutput,0);
+		rightMaster.set(ControlMode.PercentOutput,0);
 	}
 
 	public void turn(double d) {
@@ -122,35 +144,37 @@ public class DriveTrain extends Subsystem {
 		return rightEncoder;
 	}
 	
-	public VictorSP getRight() {
-		return right;
+	public VictorSPX getRight() {
+		return rightMaster;
 	}
-	public VictorSP getLeft() {
-		return left;
+	public VictorSPX getLeft() {
+		return leftMaster;
 	}
 	public void calibrateGyro() {
-		imu.calibrate();
+		//imu.calibrate();
 	}
 
 	public ADIS16448_IMU getGyro() {
-		return imu;
+		// return imu;
+		return null;
 	}
 	
 	public void resetGyro() {
-		if (imu != null) {
-			imu.reset();
-		}
+		// if (imu != null) {
+		// 	imu.reset();
+		// }
 	}
 
 	public double getAngle()
 	{
-		SmartDashboard.putNumber("TIME", System.currentTimeMillis());
-		SmartDashboard.putNumber("MINI", mini_gyro.getAngle());
-		SmartDashboard.putNumber("BIG", imu.getAngle());
-		SmartDashboard.putNumber("BIGX", imu.getAngleX());
-		SmartDashboard.putNumber("BIGY", imu.getAngleY());
-		SmartDashboard.putNumber("BIGZ", imu.getAngleZ());
-		return mini_gyro.getAngle();
+		return 12.3;
+		// SmartDashboard.putNumber("TIME", System.currentTimeMillis());
+		// SmartDashboard.putNumber("MINI", mini_gyro.getAngle());
+		// SmartDashboard.putNumber("BIG", imu.getAngle());
+		// SmartDashboard.putNumber("BIGX", imu.getAngleX());
+		// SmartDashboard.putNumber("BIGY", imu.getAngleY());
+		// SmartDashboard.putNumber("BIGZ", imu.getAngleZ());
+		// return mini_gyro.getAngle();
 	}
 	
 	public void resetEncoder() { 

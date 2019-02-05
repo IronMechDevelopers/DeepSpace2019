@@ -18,24 +18,29 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 
 	// PWM Ports
-	public static int RIGHTWHEELMOTOR = 1;
-	public static int LEFTWHEELMOTOR = 0 ;
-	public static int FOURBAR = 3;
-	public static int BALLINTAKE=2;
+	public static final int FOURBAR = 3;
+	public static final int BALLINTAKE=2;
+
+	//CAN ID's
+	public static final int RIGHTMASTER = 0;
+	public static final int RIGHTSLAVE = 1;
+	public static final int LEFTMASTER = 2;
+	public static final int LEFTSLAVE = 3;
+	
 	
 	
 	
 	// DIO ports
-	public static int LEFTWHEELENCODERA = 3;
-	public static int LEFTWHEELENCODERB = 4;
-	public static int RIGHTWHEELENCODERA = 1;
-	public static int RIGHTWHEELENCODERB = 2;
+	public static final int LEFTWHEELENCODERA = 3;
+	public static  final int LEFTWHEELENCODERB = 4;
+	public static  final int RIGHTWHEELENCODERA = 1;
+	public static final  int RIGHTWHEELENCODERB = 2;
 	
 	//Compressor Stuff
-	public static int hatchOpen = 2;
-	public static int hatchClose = 3;
-	public static int flopOpen = 4;
-	public static int flopClose = 5;
+	public static  final int hatchOpen = 2;
+	public static  final int hatchClose = 3;
+	public static  final int flopOpen = 4;
+	public static  final int flopClose = 5;
 	
 	
 	// CONSTANTS

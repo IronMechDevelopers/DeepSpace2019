@@ -40,7 +40,7 @@ public class BallIntake extends Subsystem {
     
     public void BallIn()
     {
-      ballMotor.set(.25);
+      ballMotor.set(.75);
     }
     
     public void BallOut() 

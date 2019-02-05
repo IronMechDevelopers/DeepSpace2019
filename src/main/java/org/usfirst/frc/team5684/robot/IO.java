@@ -27,6 +27,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 public class IO {
+	public static final Joystick coStick = new Joystick(0);
 	public static final Joystick leftStick = new Joystick(1);
 	public static final Joystick rightStick = new Joystick(2);
 	//private Button gyroCalib = new JoystickButton(leftStick, 1);
@@ -34,9 +35,8 @@ public class IO {
 	private Button driveFullSpeed = new JoystickButton(leftStick, 9);
 	private Button forward = new JoystickButton(leftStick, 7);
 	private Button follow = new JoystickButton(leftStick, 8);
-	private Button leftFire = new JoystickButton(rightStick, 1);
-	private Button armUp = new JoystickButton(leftStick, 1);
-	private Button armDown = new JoystickButton(rightStick, 1);
+	private Button armUp = new JoystickButton(coStick, 3);
+	private Button armDown = new JoystickButton(coStick, 5);
 	private Button ballIn = new JoystickButton(rightStick,5);
 	private Button ballOut = new JoystickButton(rightStick,3);
 	private Button lightOn = new JoystickButton(leftStick, 11);
