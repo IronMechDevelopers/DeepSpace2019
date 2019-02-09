@@ -7,36 +7,32 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
 import org.usfirst.frc.team5684.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * Add your docs here.
  */
-public class HatchCollector extends Subsystem {
-private Spark hatchMotor;
-
-
-  public HatchCollector() {
-
-    hatchMotor = new Spark(RobotMap.HATCH);
-    hatchMotor.setInverted(true);
-  }
-
-  public void HatchUp() {
-
-    hatchMotor.set(.75);
-  }
-  public void HatchDown() {
-
-    hatchMotor.set(-.25);
-  }
-  public void HatchStop() {
-
-    hatchMotor.set(0);
-  }
+public class LinearActuator extends Subsystem {
+  // Put methods for controlling this subsystem
+  private Servo linearAct;
+ 
   
+ public LinearActuator()
+ {
+ linearAct = new Servo(RobotMap.LINEARACTUATOR);
+ }
+
+ public void set(double num)
+ {
+  linearAct.set(num);
+ }
+public void LinearTurnRight()
+{
+  linearAct.set(0.5);
+}
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

@@ -73,6 +73,8 @@ public class DriveTrain extends Subsystem {
 
 		leftMaster.setNeutralMode(NeutralMode.Brake);
 		rightMaster.setNeutralMode(NeutralMode.Brake);
+		leftSlave.setNeutralMode(NeutralMode.Brake);
+		rightSlave.setNeutralMode(NeutralMode.Brake);
 
 		leftSlave.follow(leftMaster);
 		
@@ -99,6 +101,12 @@ public class DriveTrain extends Subsystem {
 	protected void initDefaultCommand() {
 		setDefaultCommand(new SimpleDrive());
 
+	}
+
+	public void setUpGyro()
+	{
+		imu.reset();
+		imu.calibrate();
 	}
 	
 	
@@ -157,7 +165,6 @@ public class DriveTrain extends Subsystem {
 
 	public ADIS16448_IMU getGyro() {
 		return imu;
-		// return null;
 	}
 	
 	public void resetGyro() {

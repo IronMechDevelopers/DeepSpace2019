@@ -21,7 +21,7 @@ public class SimpleDrive extends Command {
 	
 	private Joystick left;
 	private Joystick right;
-	private double DEADZONE=.1;
+	private double DEADZONE=.07;
 
 	public SimpleDrive() {
 

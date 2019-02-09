@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5684.robot.RobotMap;
 
@@ -25,15 +26,29 @@ public class FourBar extends Subsystem {
   public FourBar()
   {
     fourBarMotor = new Spark(RobotMap.FOURBAR);
+    fourBarMotor.setInverted(true);
     enc = new Encoder(RobotMap.FORBARENCODERA, RobotMap.FORBARENCODERB, true,
     Encoder.EncodingType.k4X);
   }
+
+
+  public double getPosition()
+  {
+    return enc.getDistance();
+  }
+
+
   public void FourBarUp(){
-    fourBarMotor.set(0.50);
+    fourBarMotor.set(0.75);
   }
 
   public void FourBarDown(){
-    fourBarMotor.set(-0.75);
+    fourBarMotor.set(-0.5);
+  }
+
+  public void set(double speed)
+  {
+    fourBarMotor.set(speed);
   }
 
   public void stopFourBar()

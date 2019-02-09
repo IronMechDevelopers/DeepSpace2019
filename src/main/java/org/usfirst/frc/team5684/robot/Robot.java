@@ -11,6 +11,7 @@ import org.usfirst.frc.team5684.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.FourBar;
 import org.usfirst.frc.team5684.robot.subsystems.HatchCollector;
+import org.usfirst.frc.team5684.robot.subsystems.LinearActuator;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -31,7 +32,9 @@ public class Robot extends TimedRobot {
 	public static BallIntake bi = new BallIntake();
 	public static FourBar fourBar = new FourBar();
 	public static HatchCollector hatch = new HatchCollector();
+	public static LinearActuator la = new LinearActuator();
 	public static IO m_oi;
+
 	
 	
 	
@@ -50,6 +53,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", m_chooser);
 		CameraServer.getInstance().startAutomaticCapture();
 		m_oi = new IO();
+		Robot.driveTrain.setUpGyro();
 
 	}
 

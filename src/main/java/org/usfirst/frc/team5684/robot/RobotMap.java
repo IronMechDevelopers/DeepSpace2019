@@ -21,6 +21,7 @@ public class RobotMap {
 	public static final int FOURBAR = 3;
 	public static final int BALLINTAKE=2;
 	public static final int HATCH = 1;
+	public static final int LINEARACTUATOR = 9;
 
 	//CAN ID's
 	public static final int RIGHTMASTER = 0;
@@ -50,6 +51,7 @@ public class RobotMap {
 	public static final double distancePerWheelPulseLeft = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionLeft;
 	public static final double distancePerWheelPulseRight = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionRight;
 	public static final double WHEELROTATION = Math.PI * WHEELDIAMETER;
+	
 
 
 	public static void updateStats()
