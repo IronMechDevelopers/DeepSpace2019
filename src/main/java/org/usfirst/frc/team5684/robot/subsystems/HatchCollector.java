@@ -7,10 +7,11 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
 import org.usfirst.frc.team5684.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * Add your docs here.
  */

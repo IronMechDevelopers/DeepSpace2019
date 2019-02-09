@@ -13,10 +13,8 @@ import org.usfirst.frc.team5684.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class FourBarToHeight extends Command {
-  private double goal;
-  private double delta=.05;
+  private double delta=.001;
   private double speed;
-  private double startHeight;
   private double goalHeight;
   private double currentHeight;
   private int forward;
@@ -27,7 +25,7 @@ public class FourBarToHeight extends Command {
     requires(Robot.fourBar);
     goalHeight=goal;
     currentHeight= Robot.fourBar.getHeight();
-    startHeight= Robot.fourBar.getHeight();
+    Robot.fourBar.getHeight();
     System.out.println("GOAL: " + goalHeight);
     System.out.println("Current: " + currentHeight);
     midpoint=(goalHeight+currentHeight)/2.0;
@@ -48,8 +46,8 @@ public class FourBarToHeight extends Command {
   protected void initialize() {
     speed=0;
     currentHeight= Robot.fourBar.getHeight();
-    startHeight= Robot.fourBar.getHeight();
-    System.out.println("GOAL: " + goalHeight);
+    Robot.fourBar.getHeight();
+    System.out.println("STARTUP GOAL: " + goalHeight);
     System.out.println("Current: " + currentHeight);
     midpoint=(goalHeight+currentHeight)/2.0;
     //check to see if we need to go up or down.  if we are going down we will invert all
@@ -87,9 +85,11 @@ public class FourBarToHeight extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Math.abs(Robot.fourBar.getHeight()-goal)<=2 * RobotMap.INCHES)
+   if(Math.abs(Robot.fourBar.getHeight()-goalHeight)<= (1 * RobotMap.INCHES))
     {
-      System.out.println("\t\t" + Math.abs(Robot.fourBar.getHeight()-goal));
+      System.out.println("\t\t: Robot.fourBar.getHeight() " + Robot.fourBar.getHeight());
+      System.out.println("\t\t: goal: " + goalHeight);
+      System.out.println("\t\t" + Math.abs(Robot.fourBar.getHeight()-goalHeight));
       System.out.println("Thank you for flying Rad airways");
       return true;
     }
@@ -117,6 +117,10 @@ public class FourBarToHeight extends Command {
 
   private double bound(double value, double max, double min)
   {
+    double tempMax = Math.max(max,min);
+    double tempMin = Math.min(max,min);
+    max=tempMax;
+    min= tempMin;
     return Math.max(Math.min(value,max),min);
   }
 

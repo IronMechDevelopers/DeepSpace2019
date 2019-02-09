@@ -19,14 +19,6 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.RemoteFeedbackDevice;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.SensorTerm;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FollowerType;
-import com.ctre.phoenix.motorcontrol.DemandType;
 
 // import com.ctre.phoenix.motorcontroller.*;
 // import com.ctre.phoenix.motorcontroller.can.*;
@@ -42,7 +34,6 @@ public class DriveTrain extends Subsystem {
 	int minRate = 8;
 	int samplesToAverage = 10;
 	private DifferentialDrive drive;
-	private static final double kVoltsPerDegreePerSecond = 0.0128;
 	private static final int kGyroPort = 0;
 	private AnalogGyro mini_gyro = new AnalogGyro(kGyroPort);
 	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
@@ -54,10 +45,6 @@ public class DriveTrain extends Subsystem {
 
 
 	public DriveTrain() {
-		imu.reset();
-		imu.calibrate();
-		mini_gyro.setSensitivity(kVoltsPerDegreePerSecond);
-		mini_gyro.calibrate();
 
 		rightMaster= new VictorSPX(RobotMap.RIGHTMASTER);
 		rightSlave= new VictorSPX(RobotMap.RIGHTSLAVE);
@@ -107,8 +94,8 @@ public class DriveTrain extends Subsystem {
 	{
 		imu.reset();
 		imu.calibrate();
-		mini_gyro.reset();
-		mini_gyro.calibrate();
+		//mini_gyro.reset();
+		//mini_gyro.calibrate();
 	}
 	
 	

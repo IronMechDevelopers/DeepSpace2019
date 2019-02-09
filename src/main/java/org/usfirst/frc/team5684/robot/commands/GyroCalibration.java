@@ -27,7 +27,6 @@ public class GyroCalibration extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return isFinished;
 	}
 	

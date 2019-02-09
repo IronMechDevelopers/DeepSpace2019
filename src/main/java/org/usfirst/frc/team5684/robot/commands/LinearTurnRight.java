@@ -8,12 +8,10 @@
 package org.usfirst.frc.team5684.robot.commands;
 
 
-import org.usfirst.frc.team5684.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class LinearTurnRight extends Command {
-  public void LinearTurnRight() {
+  public LinearTurnRight() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

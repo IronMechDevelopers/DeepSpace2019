@@ -9,7 +9,6 @@ package org.usfirst.frc.team5684.robot;
 
 import org.usfirst.frc.team5684.robot.commands.BallIn;
 import org.usfirst.frc.team5684.robot.commands.BallOut;
-import org.usfirst.frc.team5684.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5684.robot.commands.FourBarDown;
 import org.usfirst.frc.team5684.robot.commands.FourBarToHeight;
 import org.usfirst.frc.team5684.robot.commands.FourBarUp;

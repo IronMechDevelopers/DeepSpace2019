@@ -7,8 +7,6 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import java.awt.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
