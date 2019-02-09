@@ -10,7 +10,6 @@ package org.usfirst.frc.team5684.robot;
 import org.usfirst.frc.team5684.robot.commands.BallIn;
 import org.usfirst.frc.team5684.robot.commands.BallOut;
 import org.usfirst.frc.team5684.robot.commands.DriveStraightWithGyro;
-import org.usfirst.frc.team5684.robot.commands.Forward;
 import org.usfirst.frc.team5684.robot.commands.FourBarDown;
 import org.usfirst.frc.team5684.robot.commands.FourBarToHeight;
 import org.usfirst.frc.team5684.robot.commands.FourBarUp;
@@ -35,10 +34,6 @@ public class IO {
 	public static final Joystick leftStick = new Joystick(0);
 	public static final Joystick rightStick = new Joystick(2);
 	//private Button gyroCalib = new JoystickButton(leftStick, 1);
-	private Button driveStraight = new JoystickButton(leftStick, 6);
-	private Button driveFullSpeed = new JoystickButton(leftStick, 9);
-	private Button forward = new JoystickButton(leftStick, 7);
-	private Button follow = new JoystickButton(leftStick, 8);
 	private Button armUp = new JoystickButton(coStick, 6);
 	private Button armDown = new JoystickButton(coStick, 7);
 	private Button hatchUp = new JoystickButton(rightStick, 4);
@@ -47,8 +42,8 @@ public class IO {
 	private Button ballOut = new JoystickButton(rightStick,3);
 	private Button lightOn = new JoystickButton(leftStick, 11);
 	private Button lightOff = new JoystickButton(leftStick, 10);
-	private Button CohatchDown = new JoystickButton(coStick, 10);
-	private Button CohatchUp = new JoystickButton(coStick, 11);
+	private Button coHatchDown = new JoystickButton(coStick, 10);
+	private Button coHatchUp = new JoystickButton(coStick, 11);
 
 	private Button RadTest = new JoystickButton(coStick, 1);
 
@@ -58,8 +53,7 @@ public class IO {
 
 	
 	public IO() {
-	driveStraight.whenPressed(new DriveStraightWithGyro(Math.PI * RobotMap.WHEELDIAMETER));
-	forward.whileHeld(new Forward());
+
 	armUp.whileHeld(new FourBarUp());
 	armDown.whileHeld(new FourBarDown());
 	ballIn.whileHeld(new BallIn());
@@ -68,8 +62,8 @@ public class IO {
 	lightOff.whileHeld(new LightOff());
 	hatchDown.whileHeld(new HatchDown());
 	hatchUp.whileHeld(new HatchUp());
-	CohatchDown.whileHeld(new HatchDown());
-	CohatchUp.whileHeld(new HatchUp());
+	coHatchDown.whileHeld(new HatchDown());
+	coHatchUp.whileHeld(new HatchUp());
 	midRocket.whenPressed(new FourBarToHeight(RobotMap.MIDDLECARGOHOLEROCKET));
 	bottomRocket.whenPressed(new FourBarToHeight(RobotMap.BOTTOMCARGOHOLEROCKET));
 	ground.whenPressed(new FourBarToHeight(3 * RobotMap.INCHES));

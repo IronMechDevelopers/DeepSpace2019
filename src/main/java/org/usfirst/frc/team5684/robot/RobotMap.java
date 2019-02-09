@@ -51,11 +51,11 @@ public class RobotMap {
 	public static final double distancePerWheelPulseLeft = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionLeft;
 	public static final double distancePerWheelPulseRight = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionRight;
 	public static final double WHEELROTATION = Math.PI * WHEELDIAMETER;
-	public static final double BOTTOMCARGOHOLEROCKET = 1.62416666667 * INCHES;
-	public static final double MIDDLECARGOHOLEROCKET = 3.9575* INCHES;
-	public static final double TOPCARGOHOLEROCKET = 6.29083333333* INCHES;
+	public static final double BOTTOMCARGOHOLEROCKET = 19.49 * INCHES;
+	public static final double MIDDLECARGOHOLEROCKET = 47.49* INCHES;
+	public static final double TOPCARGOHOLEROCKET = 75.49* INCHES;
 	public static final double MAXFOURBARHIEGHT = 4 * FEET;
-	public static final double MINFOURBARHEIGHT = 0* INCHES;
+	public static final double MINFOURBARHEIGHT = -1* FEET;
 	
 
 
