@@ -44,7 +44,7 @@ public class DriveTrain extends Subsystem {
 	private DifferentialDrive drive;
 	private static final double kVoltsPerDegreePerSecond = 0.0128;
 	private static final int kGyroPort = 0;
-	//private AnalogGyro mini_gyro = new AnalogGyro(kGyroPort);
+	private AnalogGyro mini_gyro = new AnalogGyro(kGyroPort);
 	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	private VictorSPX leftMaster;
 	private VictorSPX leftSlave;
@@ -56,8 +56,8 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		imu.reset();
 		imu.calibrate();
-		//mini_gyro.setSensitivity(kVoltsPerDegreePerSecond);
-		//mini_gyro.calibrate();
+		mini_gyro.setSensitivity(kVoltsPerDegreePerSecond);
+		mini_gyro.calibrate();
 
 		rightMaster= new VictorSPX(RobotMap.RIGHTMASTER);
 		rightSlave= new VictorSPX(RobotMap.RIGHTSLAVE);
@@ -107,6 +107,8 @@ public class DriveTrain extends Subsystem {
 	{
 		imu.reset();
 		imu.calibrate();
+		mini_gyro.reset();
+		mini_gyro.calibrate();
 	}
 	
 	
@@ -183,6 +185,11 @@ public class DriveTrain extends Subsystem {
 		// SmartDashboard.putNumber("BIGZ", imu.getAngleZ());
 		return imu.getAngleX();
 		// return mini_gyro.getAngle();
+	}
+
+	public double getTinyAngle()
+	{
+		return mini_gyro.getAngle();
 	}
 	
 	public void resetEncoder() { 

@@ -29,6 +29,7 @@ public class FourBar extends Subsystem {
     fourBarMotor.setInverted(true);
     enc = new Encoder(RobotMap.FORBARENCODERA, RobotMap.FORBARENCODERB, true,
     Encoder.EncodingType.k4X);
+    enc.setDistancePerPulse(.05);
   }
 
 
@@ -59,6 +60,15 @@ public class FourBar extends Subsystem {
   public double readEncoder()
   {
     return enc.getDistance();
+  }
+
+  /**
+   * Returns the current hight of the fourbar measured from the bottom of the scoop.
+   * @return Current height in feet.
+   */
+  public double getHeight()
+  {
+      return 0.0364*enc.getDistance()-0.2371;
   }
 
   @Override

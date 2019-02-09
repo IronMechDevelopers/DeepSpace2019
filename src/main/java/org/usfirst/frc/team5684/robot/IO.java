@@ -52,6 +52,10 @@ public class IO {
 
 	private Button RadTest = new JoystickButton(coStick, 1);
 
+	private Button midRocket = new JoystickButton(leftStick, 7);
+	private Button bottomRocket = new JoystickButton(leftStick, 9);
+	private Button ground = new JoystickButton(leftStick, 11);
+
 	
 	public IO() {
 	driveStraight.whenPressed(new DriveStraightWithGyro(Math.PI * RobotMap.WHEELDIAMETER));
@@ -66,6 +70,9 @@ public class IO {
 	hatchUp.whileHeld(new HatchUp());
 	CohatchDown.whileHeld(new HatchDown());
 	CohatchUp.whileHeld(new HatchUp());
+	midRocket.whenPressed(new FourBarToHeight(RobotMap.MIDDLECARGOHOLEROCKET));
+	bottomRocket.whenPressed(new FourBarToHeight(RobotMap.BOTTOMCARGOHOLEROCKET));
+	ground.whenPressed(new FourBarToHeight(3 * RobotMap.INCHES));
 
 	RadTest.whenPressed(new MoveServo());
 	}

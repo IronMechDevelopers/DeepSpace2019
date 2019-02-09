@@ -51,6 +51,11 @@ public class RobotMap {
 	public static final double distancePerWheelPulseLeft = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionLeft;
 	public static final double distancePerWheelPulseRight = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionRight;
 	public static final double WHEELROTATION = Math.PI * WHEELDIAMETER;
+	public static final double BOTTOMCARGOHOLEROCKET = 1.62416666667 * INCHES;
+	public static final double MIDDLECARGOHOLEROCKET = 3.9575* INCHES;
+	public static final double TOPCARGOHOLEROCKET = 6.29083333333* INCHES;
+	public static final double MAXFOURBARHIEGHT = 4 * FEET;
+	public static final double MINFOURBARHEIGHT = 0* INCHES;
 	
 
 
@@ -68,7 +73,8 @@ public class RobotMap {
 
 		SmartDashboard.putNumber("leftDistance", Robot.driveTrain.getLeftEncoder().getDistance());
 		SmartDashboard.putNumber("rightDistance", Robot.driveTrain.getRightEncoder().getDistance());
-		SmartDashboard.putNumber("fourBar", Robot.fourBar.readEncoder());
+		SmartDashboard.putNumber("fourBar", Robot.fourBar.getHeight());
+		SmartDashboard.putNumber("tinyGyro",Robot.driveTrain.getTinyAngle());
 	}
 
 }

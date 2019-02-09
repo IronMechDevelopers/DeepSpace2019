@@ -8,62 +8,68 @@
 package org.usfirst.frc.team5684.robot.commands;
 
 import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PIDCommand;
 
 public class FourBarToHeight extends Command {
   private double goal;
   private double delta=.05;
-  private boolean isForward;
   private double speed;
-  private double halfwayPoint;
+  private double startHeight;
+  private double goalHeight;
+  private double currentHeight;
+  private int forward;
+  private double midpoint;
   public FourBarToHeight(double goal) {
-    this.goal=goal;
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.fourBar);
+    goalHeight=goal;
+    currentHeight= Robot.fourBar.getHeight();
+    startHeight= Robot.fourBar.getHeight();
+    midpoint=(goalHeight+currentHeight)/2.0;
+    //check to see if we need to go up or down.  if we are going down we will invert all
+    //ou operations.
+    if(goalHeight>currentHeight)
+    {
+      forward=1;
+    }
+    else
+    {
+      forward=-1;
+    }
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     speed=0;
-     double current = Robot.fourBar.getPosition();
-      halfwayPoint = (goal-current)/2;
-     if(current<goal)
-     {
-       isForward=true;
-     }
-     else
-     {
-       isForward=false;
-     }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // if(Robot.fourBar.getPosition() <= halfwayPoint)
-    // {
-      speed+=delta;
-    // }
-    // else
-    // {
-    //   speed-=delta;
-    // }
+    if(forward * Robot.fourBar.getHeight() <= forward * midpoint)
+    {
+      speed+=forward*delta;
+      System.out.println(Robot.fourBar.getHeight()+"\t increase speed");
+     }
+    else
+    {
+      speed-=forward*delta;
+      System.out.println(Robot.fourBar.getHeight()+"\t decrease speed");
+    }
     Robot.fourBar.set(speed);
     System.out.println("Speed is at: " + speed);
-    System.out.println("Postion is at : " + Robot.fourBar.getPosition());
+    System.out.println("Postion is at : " + Robot.fourBar.getHeight());
     
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.fourBar.getPosition()>=800)
+    if(Math.abs(Robot.fourBar.getHeight()-goal)>=2 * RobotMap.INCHES)
       return true;
-    if(Math.abs(Robot.fourBar.getPosition() - goal) <= 5)
+      if (Robot.fourBar.getHeight()>=RobotMap.MAXFOURBARHIEGHT ||Robot.fourBar.getHeight()<=RobotMap.MINFOURBARHEIGHT )
       return true;
     return false;
   }
