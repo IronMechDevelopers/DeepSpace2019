@@ -100,8 +100,18 @@ public class DriveTrain extends Subsystem {
 	
 	
 	public void simpleDrive(double xSpeed, double zRotation) {
+		xSpeed = xSpeed * RobotMap.GEAR;
+		zRotation = zRotation * RobotMap.GEAR;
 		leftMaster.set(ControlMode.PercentOutput,xSpeed+zRotation);
 		rightMaster.set(ControlMode.PercentOutput,xSpeed-zRotation);
+	}
+
+	public void tankDrive(double left, double right)
+	{
+		left = left * RobotMap.GEAR;
+		right = right * RobotMap.GEAR;
+		leftMaster.set(ControlMode.PercentOutput,left);
+		rightMaster.set(ControlMode.PercentOutput,right);
 	}
 
 	public void setLeftRight(double leftSpeed, double rightSpeed)

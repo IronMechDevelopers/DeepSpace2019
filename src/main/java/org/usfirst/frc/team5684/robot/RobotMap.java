@@ -54,8 +54,9 @@ public class RobotMap {
 	public static final double BOTTOMCARGOHOLEROCKET = 19.49 * INCHES;
 	public static final double MIDDLECARGOHOLEROCKET = 47.49* INCHES;
 	public static final double TOPCARGOHOLEROCKET = 75.49* INCHES;
-	public static final double MAXFOURBARHIEGHT = 4 * FEET;
-	public static final double MINFOURBARHEIGHT = -1* FEET;
+	public static final double MAXFOURBARHIEGHT = 4.5 * FEET;
+	public static final double MINFOURBARHEIGHT = -6* INCHES;
+	public static double GEAR=1;
 	
 
 
@@ -63,7 +64,7 @@ public class RobotMap {
 	{
 		double currentSpeed = (Robot.driveTrain.getLeftSpeed()+ Robot.driveTrain.getRightSpeed())/2.0;
 		
-		SmartDashboard.putNumber("currentSpeed", currentSpeed);
+		SmartDashboard.putNumber("Speed", currentSpeed);
 		SmartDashboard.putNumber("rightSpeed", Robot.driveTrain.getRightSpeed());
 		SmartDashboard.putNumber("leftSpeed", Robot.driveTrain.getLeftSpeed());
 		SmartDashboard.putNumber("currentAngle", Robot.driveTrain.getAngle());
@@ -73,8 +74,10 @@ public class RobotMap {
 
 		SmartDashboard.putNumber("leftDistance", Robot.driveTrain.getLeftEncoder().getDistance());
 		SmartDashboard.putNumber("rightDistance", Robot.driveTrain.getRightEncoder().getDistance());
-		SmartDashboard.putNumber("fourBar", Robot.fourBar.getHeight());
+		SmartDashboard.putNumber("fourBar", Robot.fourBar.getHeight() * 12);
 		SmartDashboard.putNumber("tinyGyro",Robot.driveTrain.getTinyAngle());
+
+		SmartDashboard.putNumber("GEAR",RobotMap.GEAR);
 	}
 
 }

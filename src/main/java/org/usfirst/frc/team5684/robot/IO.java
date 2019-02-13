@@ -9,6 +9,7 @@ package org.usfirst.frc.team5684.robot;
 
 import org.usfirst.frc.team5684.robot.commands.BallIn;
 import org.usfirst.frc.team5684.robot.commands.BallOut;
+import org.usfirst.frc.team5684.robot.commands.FollowPath;
 import org.usfirst.frc.team5684.robot.commands.FourBarDown;
 import org.usfirst.frc.team5684.robot.commands.FourBarToHeight;
 import org.usfirst.frc.team5684.robot.commands.FourBarUp;
@@ -17,6 +18,7 @@ import org.usfirst.frc.team5684.robot.commands.HatchUp;
 import org.usfirst.frc.team5684.robot.commands.LightOff;
 import org.usfirst.frc.team5684.robot.commands.LightOn;
 import org.usfirst.frc.team5684.robot.commands.MoveServo;
+import org.usfirst.frc.team5684.robot.commands.ShiftDown;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -49,6 +51,7 @@ public class IO {
 	private Button midRocket = new JoystickButton(leftStick, 7);
 	private Button bottomRocket = new JoystickButton(leftStick, 9);
 	private Button ground = new JoystickButton(leftStick, 11);
+	private Button gear = new JoystickButton(rightStick,2);
 
 	
 	public IO() {
@@ -66,8 +69,9 @@ public class IO {
 	midRocket.whenPressed(new FourBarToHeight(RobotMap.MIDDLECARGOHOLEROCKET));
 	bottomRocket.whenPressed(new FourBarToHeight(RobotMap.BOTTOMCARGOHOLEROCKET));
 	ground.whenPressed(new FourBarToHeight(3 * RobotMap.INCHES));
+	gear.whileHeld(new ShiftDown());
 
-	RadTest.whenPressed(new MoveServo());
+	RadTest.whenPressed(new FollowPath("line"));
 	}
 	
 	

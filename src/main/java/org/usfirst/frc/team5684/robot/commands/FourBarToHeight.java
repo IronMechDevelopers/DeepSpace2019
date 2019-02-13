@@ -13,14 +13,14 @@ import org.usfirst.frc.team5684.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class FourBarToHeight extends Command {
-  private double delta=.001;
+  private double delta=.01;
   private double speed;
   private double goalHeight;
   private double currentHeight;
   private int forward;
   private double midpoint;
-  private double maxSpeed = .75;
-  private double minSpeed = -1*maxSpeed;
+  private double maxSpeed = 1;
+  private double minSpeed = -.45;
   public FourBarToHeight(double goal) {
     requires(Robot.fourBar);
     goalHeight=goal;
@@ -70,11 +70,11 @@ public class FourBarToHeight extends Command {
       speed+=forward*delta;
       System.out.println(Robot.fourBar.getHeight()+"\t increase speed");
      }
-    else
-    {
-      speed-=forward*delta;
-      System.out.println(Robot.fourBar.getHeight()+"\t decrease speed");
-    }
+    // else
+    // {
+    //   speed-=forward*delta;
+    //   System.out.println(Robot.fourBar.getHeight()+"\t decrease speed");
+    // }
     speed = bound(speed,maxSpeed,minSpeed);
     Robot.fourBar.set(speed);
     System.out.println("Speed is at: " + speed);

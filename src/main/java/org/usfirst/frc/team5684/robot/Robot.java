@@ -13,7 +13,7 @@ import org.usfirst.frc.team5684.robot.subsystems.FourBar;
 import org.usfirst.frc.team5684.robot.subsystems.HatchCollector;
 import org.usfirst.frc.team5684.robot.subsystems.LinearActuator;
 
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
 	public static FourBar fourBar = new FourBar();
 	public static HatchCollector hatch = new HatchCollector();
 	public static LinearActuator la = new LinearActuator();
-	public static IO m_oi;
+	public static IO m_oi = new IO();;
 
 	
 	
@@ -52,8 +52,6 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		CameraServer.getInstance().startAutomaticCapture();
-		m_oi = new IO();
-		Robot.driveTrain.setUpGyro();
 
 	}
 

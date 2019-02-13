@@ -34,7 +34,7 @@ public class HatchDown extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.fourBar.getHeight()>=RobotMap.MAXFOURBARHIEGHT ||Robot.fourBar.getHeight()<=RobotMap.MINFOURBARHEIGHT )
+    if (Robot.fourBar.getHeight()<=RobotMap.MINFOURBARHEIGHT )
     return true;
   return false;
   }
