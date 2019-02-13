@@ -9,6 +9,7 @@ package org.usfirst.frc.team5684.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5684.robot.RobotMap;
+import org.usfirst.frc.team5684.robot.commands.ManualControl;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
@@ -36,6 +37,12 @@ public class FourBar extends Subsystem {
   {
     return enc.getDistance();
   }
+
+  @Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new ManualControl());
+
+	}
 
 
   public void FourBarUp(){
@@ -70,9 +77,4 @@ public class FourBar extends Subsystem {
       return 0.0364*enc.getDistance()-0.2371;
   }
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
 }

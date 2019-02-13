@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 
 	// PWM Ports
-	public static final int FOURBAR = 3;
-	public static final int BALLINTAKE=2;
+	public static final int FOURBAR = 2;
+	public static final int BALLINTAKE=3;
 	public static final int HATCH = 1;
 	public static final int LINEARACTUATOR = 9;
 
@@ -45,7 +45,7 @@ public class RobotMap {
 	public static final double FEET = 1.0;
 	public static final double INCHES = 1.0/12.0;
 	public static final double WHEELDIAMETER = 6 * INCHES;
-	public static int pulsePerRevolutionLeft = 3600;
+	public static int pulsePerRevolutionLeft = 360;
 	public static int pulsePerRevolutionRight = 360;
 	public static int pulsePerRevolutionFourBar = 20;
 	public static final double distancePerWheelPulseLeft = (Math.PI * WHEELDIAMETER) / pulsePerRevolutionLeft;

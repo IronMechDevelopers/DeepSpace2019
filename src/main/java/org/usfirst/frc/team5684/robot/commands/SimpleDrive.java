@@ -75,8 +75,8 @@ public class SimpleDrive extends Command {
 	{
 		rightInput=0;
 	}
-	 //Robot.driveTrain.simpleDrive(-1*leftInput, rightInput);
-	 Robot.driveTrain.tankDrive(-1*  left.getRawAxis(1), -1*right.getRawAxis(1));
+	 Robot.driveTrain.simpleDrive(-1*leftInput, rightInput);
+	 //Robot.driveTrain.tankDrive(-1*  left.getRawAxis(1), -1*right.getRawAxis(1));
  
  }
 

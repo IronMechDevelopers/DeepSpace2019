@@ -22,7 +22,9 @@ public class FollowPath extends Command {
   private Encoder m_right_encoder = Robot.driveTrain.getRightEncoder();
   private EncoderFollower m_left_follower;
   private EncoderFollower m_right_follower;
-  private static final double k_max_velocity = 10;
+  private static final double k_max_velocity = 0.5;
+  private Trajectory left_trajectory;
+  private Trajectory right_trajectory;
 
 
 
@@ -30,37 +32,38 @@ public class FollowPath extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.driveTrain);
-    Trajectory left_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".right");
-    Trajectory right_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".left");
+    left_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".right");
+    right_trajectory = PathfinderFRC.getTrajectory(k_path_name + ".left");
     
-    
-    m_left_follower = new EncoderFollower(left_trajectory);
-    m_right_follower = new EncoderFollower(right_trajectory);
-    m_left_follower.configureEncoder(m_left_encoder.get(), RobotMap.pulsePerRevolutionLeft, RobotMap.WHEELDIAMETER);
-    // You must tune the PID values on the following line!
-    m_left_follower.configurePIDVA(1.0, 0.0, 0.0, 1 / k_max_velocity, 0);
-
-    m_right_follower.configureEncoder(m_right_encoder.get(),RobotMap.pulsePerRevolutionRight, RobotMap.WHEELDIAMETER);
-    // You must tune the PID values on the following line!
-    m_right_follower.configurePIDVA(1.0, 0.0, 0.0, 1 / k_max_velocity, 0);
 
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    
+    
+    
+    m_left_follower = new EncoderFollower(left_trajectory);
+    m_right_follower = new EncoderFollower(right_trajectory);
+    m_left_follower.configureEncoder(m_left_encoder.get(), RobotMap.pulsePerRevolutionLeft, RobotMap.WHEELDIAMETER);
+    // You must tune the PID values on the following line!
+    m_left_follower.configurePIDVA(1.2, 0.0, 0.0, 1 / k_max_velocity, 0);
+
+    m_right_follower.configureEncoder(m_right_encoder.get(),RobotMap.pulsePerRevolutionRight, RobotMap.WHEELDIAMETER);
+    // You must tune the PID values on the following line!
+    m_right_follower.configurePIDVA(1.2, 0.0, 0.0, 1 / k_max_velocity, 0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    RobotMap.updateStats();
     if (m_left_follower.isFinished() || m_right_follower.isFinished()) {
       this.end();
     }else {
       double left_speed = m_left_follower.calculate(m_left_encoder.get());
       double right_speed = m_right_follower.calculate(m_right_encoder.get());
-      System.out.println("left_speed: " + left_speed+"\t" + m_left_encoder.getRate());
-      System.out.println("right_speed: " + right_speed + "\t" + m_right_encoder.getRate());
       double heading = Robot.driveTrain.getAngle();
       double desired_heading = Pathfinder.r2d(m_left_follower.getHeading());
       heading = desired_heading;
