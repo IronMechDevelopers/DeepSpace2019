@@ -33,10 +33,10 @@ public class RobotMap {
 	
 	
 	// DIO ports
-	public static final int LEFTWHEELENCODERA = 3;
-	public static  final int LEFTWHEELENCODERB = 4;
 	public static  final int RIGHTWHEELENCODERA = 1;
 	public static final  int RIGHTWHEELENCODERB = 2;
+	public static final int LEFTWHEELENCODERA = 3;
+	public static  final int LEFTWHEELENCODERB = 4;
 	public static final  int FORBARENCODERA = 5;
 	public static final  int FORBARENCODERB = 6;
 	

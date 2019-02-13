@@ -94,8 +94,8 @@ public class DriveTrain extends Subsystem {
 	{
 		imu.reset();
 		imu.calibrate();
-		//mini_gyro.reset();
-		//mini_gyro.calibrate();
+		mini_gyro.reset();
+		mini_gyro.calibrate();
 	}
 	
 	

@@ -71,7 +71,7 @@ public class IO {
 	ground.whenPressed(new FourBarToHeight(3 * RobotMap.INCHES));
 	gear.whileHeld(new ShiftDown());
 
-	RadTest.whenPressed(new FollowPath("line"));
+	//RadTest.whenPressed(new FollowPath("line"));
 	}
 	
 	
