@@ -7,32 +7,26 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.SpeedController;
+import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.PathfinderFRC;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.EncoderFollower;
 
-import org.usfirst.frc.team5684.robot.Robot;
-import org.usfirst.frc.team5684.robot.RobotMap;
-
-
-import edu.wpi.first.wpilibj.Encoder;
-
 public class FollowPath extends Command {
-private String k_path_name;
   private Encoder m_left_encoder=Robot.driveTrain.getLeftEncoder();
-  private Encoder m_right_encoder=Robot.driveTrain.getRightEncoder();
+  private Encoder m_right_encoder = Robot.driveTrain.getRightEncoder();
   private EncoderFollower m_left_follower;
   private EncoderFollower m_right_follower;
   private static final double k_max_velocity = 10;
 
 
 
-
   public FollowPath(String k_path_name) {
-    this.k_path_name=k_path_name;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.driveTrain);
@@ -80,7 +74,7 @@ private String k_path_name;
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return m_left_follower.isFinished() || m_right_follower.isFinished();
   }
 
   // Called once after isFinished returns true

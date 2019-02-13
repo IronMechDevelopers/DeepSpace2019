@@ -17,7 +17,6 @@ import org.usfirst.frc.team5684.robot.commands.HatchDown;
 import org.usfirst.frc.team5684.robot.commands.HatchUp;
 import org.usfirst.frc.team5684.robot.commands.LightOff;
 import org.usfirst.frc.team5684.robot.commands.LightOn;
-import org.usfirst.frc.team5684.robot.commands.MoveServo;
 import org.usfirst.frc.team5684.robot.commands.ShiftDown;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -71,7 +70,7 @@ public class IO {
 	ground.whenPressed(new FourBarToHeight(3 * RobotMap.INCHES));
 	gear.whileHeld(new ShiftDown());
 
-	//RadTest.whenPressed(new FollowPath("line"));
+	RadTest.whenPressed(new FollowPath("line"));
 	}
 	
 	
