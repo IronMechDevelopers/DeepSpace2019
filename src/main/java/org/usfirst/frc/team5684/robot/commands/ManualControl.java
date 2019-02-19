@@ -9,6 +9,7 @@ package org.usfirst.frc.team5684.robot.commands;
 
 import org.usfirst.frc.team5684.robot.IO;
 import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ManualControl extends Command {
   private Joystick control;
   private double DEADZONE=.07;
+  
   public ManualControl() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -36,13 +38,28 @@ public class ManualControl extends Command {
     {
       num=0;
     }
-    num*=-1;
+    if(RobotMap.LOCK){
+    if(Robot.fourBar.getHeight()>=RobotMap.MAXFOURBARHIEGHT && num>0)
+    {
+      num=0;
+    }
+    if(Robot.fourBar.getHeight()<=RobotMap.MINFOURBARHIEGHT && num<0)
+    {
+      num=0;
+    }
+  }
+
     Robot.fourBar.set(num);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if(Robot.fourBar.isAtBottom())
+    {
+       Robot.fourBar.resetEncoder();
+       return true;
+    }
     return false;
   }
 

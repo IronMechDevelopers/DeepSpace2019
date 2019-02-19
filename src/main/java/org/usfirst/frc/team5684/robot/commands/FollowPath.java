@@ -25,6 +25,13 @@ public class FollowPath extends Command {
   private static final double k_max_velocity = 0.5;
   private Trajectory left_trajectory;
   private Trajectory right_trajectory;
+  private double lastLeft;
+  private double lastRight;
+  private double lastGoalLeft;
+  private double lastGoalRight;
+  private final double DELTA=.2;
+  private double left;
+  private double right;
 
 
 
@@ -53,6 +60,12 @@ public class FollowPath extends Command {
     m_right_follower.configureEncoder(m_right_encoder.get(),RobotMap.pulsePerRevolutionRight, RobotMap.WHEELDIAMETER);
     // You must tune the PID values on the following line!
     m_right_follower.configurePIDVA(1.2, 0.0, 0.0, 1 / k_max_velocity, 0);
+    lastLeft=0;
+    lastRight=0;
+    lastGoalLeft=0;
+    lastGoalRight=0;
+    left=0;
+    right=0;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -64,13 +77,48 @@ public class FollowPath extends Command {
     }else {
       double left_speed = m_left_follower.calculate(m_left_encoder.get());
       double right_speed = m_right_follower.calculate(m_right_encoder.get());
+      
+      if(left_speed>lastGoalLeft)
+      {
+        left+=DELTA;
+        lastGoalLeft=left_speed;
+      }
+      else if ((left_speed>lastGoalLeft))
+      {
+        left-=DELTA;
+        lastGoalLeft=left_speed;
+      }
+      else
+      {
+        left=left;
+        lastGoalLeft=left_speed;
+      }
+
+      if(right_speed>lastGoalRight)
+      {
+        right+=DELTA;
+        lastGoalRight=right_speed;
+      }
+      else if ((right_speed>lastGoalRight))
+      {
+        right-=DELTA;
+        lastGoalRight=right_speed;
+      }
+      else
+      {
+        right=right;
+        lastGoalRight=right_speed;
+      }
+
+
       double heading = Robot.driveTrain.getAngle();
       double desired_heading = Pathfinder.r2d(m_left_follower.getHeading());
       heading = desired_heading;
       //TODO assume the heading is correct.
       double heading_difference = Pathfinder.boundHalfDegrees(desired_heading - heading);
       double turn =  0.8 * (-1.0/80.0) * heading_difference;
-      Robot.driveTrain.setLeftRight(left_speed + turn,right_speed - turn);
+      System.out.println(left+"\t"+ right + "\t" + turn);
+      Robot.driveTrain.setLeftRight(left + turn,right - turn);
     }
   }
 

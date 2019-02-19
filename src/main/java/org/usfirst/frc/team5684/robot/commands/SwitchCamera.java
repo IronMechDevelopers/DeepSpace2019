@@ -7,14 +7,19 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team5684.robot.Robot;
 
-public class FourBarDown extends Command {
-  public FourBarDown() {
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class SwitchCamera extends Command {
+  private boolean mainCamrea;
+  public SwitchCamera() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.fourBar);
+    mainCamrea=true;
   }
 
   // Called just before this Command runs the first time
@@ -25,24 +30,30 @@ public class FourBarDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.fourBar.FourBarDown();
+    if(mainCamrea)
+    {
+      SmartDashboard.putNumber("camearaNumer",0);
+      CameraServer.getInstance().getServer().close();
+      CameraServer.getInstance().getServer().setSource(CameraServer.getInstance().startAutomaticCapture(0));
+    }
+    else{
+      SmartDashboard.putNumber("camearaNumer",1);
+      CameraServer.getInstance().getServer().close();
+      CameraServer.getInstance().getServer().setSource(CameraServer.getInstance().startAutomaticCapture(1));
+    }
+    mainCamrea=!mainCamrea;
+    this.end();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.fourBar.isAtBottom())
-    {
-       Robot.fourBar.resetEncoder();
-       return true;
-    }
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.fourBar.stopFourBar();
   }
 
   // Called when another command which requires one or more of the same

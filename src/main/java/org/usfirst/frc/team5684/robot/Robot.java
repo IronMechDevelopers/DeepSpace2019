@@ -13,6 +13,8 @@ import org.usfirst.frc.team5684.robot.subsystems.FourBar;
 import org.usfirst.frc.team5684.robot.subsystems.HatchCollector;
 import org.usfirst.frc.team5684.robot.subsystems.LinearActuator;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -33,7 +35,9 @@ public class Robot extends TimedRobot {
 	public static FourBar fourBar = new FourBar();
 	public static HatchCollector hatch = new HatchCollector();
 	public static LinearActuator la = new LinearActuator();
-	public static IO m_oi = new IO();;
+	public static IO m_oi = new IO();
+	public static UsbCamera cam1;
+	public static UsbCamera cam2;
 
 	
 	
@@ -51,8 +55,11 @@ public class Robot extends TimedRobot {
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		CameraServer.getInstance().startAutomaticCapture();
-
+		cam1 = CameraServer.getInstance().startAutomaticCapture(0);
+		cam2 = CameraServer.getInstance().startAutomaticCapture(1);
+		cam1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+		cam2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+		CameraServer.getInstance().getServer().setSource(cam1);
 	}
 
 	/**

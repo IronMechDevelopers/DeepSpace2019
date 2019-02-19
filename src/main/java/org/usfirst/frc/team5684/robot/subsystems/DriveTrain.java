@@ -97,6 +97,12 @@ public class DriveTrain extends Subsystem {
 		mini_gyro.reset();
 		mini_gyro.calibrate();
 	}
+
+	public void radTemp(double left, double right)
+	{
+		leftMaster.set(ControlMode.Velocity,left);
+		rightMaster.set(ControlMode.Velocity, right);
+	}
 	
 	
 	public void simpleDrive(double xSpeed, double zRotation) {

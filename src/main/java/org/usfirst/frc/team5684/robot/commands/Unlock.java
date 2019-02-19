@@ -7,14 +7,20 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
-public class FourBarDown extends Command {
-  public FourBarDown() {
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class Unlock extends Command {
+  private long cooldown;
+  private long time;
+  private boolean end;
+  public Unlock() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.fourBar);
+    // eg. requires(chassis)
+    cooldown= System.currentTimeMillis();
+    time=100;
   }
 
   // Called just before this Command runs the first time
@@ -25,30 +31,29 @@ public class FourBarDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.fourBar.FourBarDown();
+    SmartDashboard.putBoolean("unlock", RobotMap.LOCK);
+    if(System.currentTimeMillis()>=cooldown+time)
+    {
+    RobotMap.LOCK=!RobotMap.LOCK;
+    cooldown=System.currentTimeMillis();
+    }
+    end=true;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.fourBar.isAtBottom())
-    {
-       Robot.fourBar.resetEncoder();
-       return true;
-    }
-    return false;
+    return end;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.fourBar.stopFourBar();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
   }
 }

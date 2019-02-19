@@ -33,6 +33,7 @@ public class RobotMap {
 	
 	
 	// DIO ports
+	public static final int LIMITSWITCHFOURBAR = 0;
 	public static  final int RIGHTWHEELENCODERA = 1;
 	public static final  int RIGHTWHEELENCODERB = 2;
 	public static final int LEFTWHEELENCODERA = 3;
@@ -56,7 +57,9 @@ public class RobotMap {
 	public static final double TOPCARGOHOLEROCKET = 75.49* INCHES;
 	public static final double MAXFOURBARHIEGHT = 4.5 * FEET;
 	public static final double MINFOURBARHEIGHT = -6* INCHES;
+	public static final double MINFOURBARHIEGHT = 0;
 	public static double GEAR=1;
+	public static boolean LOCK=true;
 	
 
 

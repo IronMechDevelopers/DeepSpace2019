@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5684.robot.RobotMap;
 import org.usfirst.frc.team5684.robot.commands.ManualControl;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 
@@ -20,6 +21,7 @@ import edu.wpi.first.wpilibj.Spark;
 public class FourBar extends Subsystem {
   private Spark fourBarMotor;
   private Encoder enc;
+  private DigitalInput limitSwitch = new DigitalInput(RobotMap.LIMITSWITCHFOURBAR);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -40,7 +42,7 @@ public class FourBar extends Subsystem {
 
   @Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new ManualControl());
+		//setDefaultCommand(new ManualControl());
 
 	}
 
@@ -68,6 +70,11 @@ public class FourBar extends Subsystem {
     return enc.getDistance();
   }
 
+  public boolean isAtBottom()
+  {
+    return !limitSwitch.get();
+  }
+
   /**
    * Returns the current hight of the fourbar measured from the bottom of the scoop.
    * @return Current height in feet.
@@ -76,5 +83,10 @@ public class FourBar extends Subsystem {
   {
       return 0.0364*enc.getDistance()-0.2371;
   }
+
+
+public void resetEncoder() {
+  enc.reset();
+}
 
 }

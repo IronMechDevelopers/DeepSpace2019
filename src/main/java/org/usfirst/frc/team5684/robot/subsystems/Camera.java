@@ -7,37 +7,15 @@
 
 package org.usfirst.frc.team5684.robot.subsystems;
 
-import org.usfirst.frc.team5684.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class HatchCollector extends Subsystem {
-private Spark hatchMotor;
+public class Camera extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
-
-  public HatchCollector() {
-
-    hatchMotor = new Spark(RobotMap.HATCH);
-    hatchMotor.setInverted(true);
-  }
-
-  public void HatchUp() {
-
-    hatchMotor.set(.75);
-  }
-  public void HatchDown() {
-
-    hatchMotor.set(-.4);
-  }
-  public void HatchStop() {
-
-    hatchMotor.set(0);
-  }
-  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
