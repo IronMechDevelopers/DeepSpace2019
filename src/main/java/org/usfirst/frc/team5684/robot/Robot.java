@@ -11,7 +11,7 @@ import org.usfirst.frc.team5684.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.FourBar;
 import org.usfirst.frc.team5684.robot.subsystems.HatchCollector;
-import org.usfirst.frc.team5684.robot.subsystems.LinearActuator;
+import org.usfirst.frc.team5684.robot.subsystems.Flopper;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSource;
@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
 	public static BallIntake bi = new BallIntake();
 	public static FourBar fourBar = new FourBar();
 	public static HatchCollector hatch = new HatchCollector();
-	public static LinearActuator la = new LinearActuator();
+	public static Flopper flop = new Flopper();
 	public static IO m_oi = new IO();
 	public static UsbCamera cam1;
 	public static UsbCamera cam2;

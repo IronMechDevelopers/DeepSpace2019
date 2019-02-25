@@ -8,13 +8,15 @@
 package org.usfirst.frc.team5684.robot.commands;
 
 import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class FlopOpen extends Command {
-  public FlopOpen() {
+public class FlopDown extends Command {
+  public FlopDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.bi);
   }
 
   // Called just before this Command runs the first time
@@ -25,19 +27,19 @@ public class FlopOpen extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.bi.FlopIn();
+    Robot.flop.FlopDown();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.fourBar.getHeight()<=24*RobotMap.INCHES || Robot.flop.isFlopperDown();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.bi.kill();
+    Robot.flop.killFlop();
   }
 
   // Called when another command which requires one or more of the same

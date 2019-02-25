@@ -11,8 +11,8 @@ import org.usfirst.frc.team5684.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class FlopClose extends Command {
-  public FlopClose() {
+public class FlopIn extends Command {
+  public FlopIn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -20,25 +20,25 @@ public class FlopClose extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.bi.FlopIn();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.bi.FlopIn();
+    Robot.flop.FlopIn();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.flop.isFlopperUp();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.bi.kill();
+    Robot.flop.killIntake();
+
   }
 
   // Called when another command which requires one or more of the same

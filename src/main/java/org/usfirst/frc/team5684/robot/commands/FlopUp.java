@@ -7,15 +7,15 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
-public class MoveServo extends Command {
-  public MoveServo() {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class FlopUp extends Command {
+  public FlopUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-  //  requires(Robot.la);
-    SmartDashboard.putNumber("servo",0);
   }
 
   // Called just before this Command runs the first time
@@ -26,21 +26,19 @@ public class MoveServo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double value =  SmartDashboard.getNumber("servo", 0);
-    System.out.println(value);
-   // Robot.la.set(value);
-    
+    Robot.flop.FlopUp();;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.fourBar.getHeight()<=24*RobotMap.INCHES || Robot.flop.isFlopperUp();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.flop.killFlop();
   }
 
   // Called when another command which requires one or more of the same

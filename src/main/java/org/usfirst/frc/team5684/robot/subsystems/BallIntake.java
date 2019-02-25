@@ -18,34 +18,31 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class BallIntake extends Subsystem {
     private Victor ballMotor;
-    private DoubleSolenoid flopper;
+    private Victor flopper;
+    private Victor flopWheels;
+    private double flopperSpeed=.1;
+    private double flopperWheelsSpeed=1;
+
     
 
     public BallIntake()
     {
+    
       ballMotor = new Victor(RobotMap.BALLINTAKE);
       ballMotor.setInverted(!ballMotor.getInverted());
-    }
-    public void FlopIn() 
-    {
-      
-      flopper.set(DoubleSolenoid.Value.kForward);
+   
     }
     
-    public void FlopOut() 
-    {
-
-      flopper.set(DoubleSolenoid.Value.kReverse);
-    }
+    
     
     public void BallIn()
     {
-      ballMotor.set(.75);
+      ballMotor.set(flopperWheelsSpeed);
     }
     
     public void BallOut() 
     {
-      ballMotor.set(-1);
+      ballMotor.set(-1*flopperWheelsSpeed);
     }
 
     public void BallStop()
@@ -53,10 +50,7 @@ public class BallIntake extends Subsystem {
       ballMotor.set(0);
     }
     
-    public void kill()
-    {
-      flopper.set(DoubleSolenoid.Value.kOff);
-    }
+    
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 

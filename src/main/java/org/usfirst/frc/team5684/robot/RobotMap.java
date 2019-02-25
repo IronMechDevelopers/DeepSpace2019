@@ -21,7 +21,8 @@ public class RobotMap {
 	public static final int FOURBAR = 2;
 	public static final int BALLINTAKE=3;
 	public static final int HATCH = 1;
-	public static final int LINEARACTUATOR = 9;
+	public static final int FLOPPER = 5;
+	public static final int FLOPPERINTAKE = 4;
 
 	//CAN ID's
 	public static final int RIGHTMASTER = 0;
@@ -40,6 +41,8 @@ public class RobotMap {
 	public static  final int LEFTWHEELENCODERB = 4;
 	public static final  int FORBARENCODERA = 5;
 	public static final  int FORBARENCODERB = 6;
+	public static final int LINITFLOPPERUP = 7;
+	public static final int LINITFLOPPERDOWN = 8;
 	
 	
 	// CONSTANTS
@@ -60,6 +63,7 @@ public class RobotMap {
 	public static final double MINFOURBARHIEGHT = 0;
 	public static double GEAR=1;
 	public static boolean LOCK=true;
+	public static double FOURBARHEIGHT=0;
 	
 
 

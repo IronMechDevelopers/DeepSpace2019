@@ -7,11 +7,13 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
-public class LightOff extends Command {
-  public LightOff() {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class FlopOut extends Command {
+  public FlopOut() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,23 +26,25 @@ public class LightOff extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putBoolean("light",false);
+    Robot.flop.FlopOut();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.flop.isFlopperUp();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.flop.FlopOut();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+this.end();
   }
 }

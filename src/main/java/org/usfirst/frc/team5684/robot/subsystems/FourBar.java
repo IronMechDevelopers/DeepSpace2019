@@ -72,7 +72,7 @@ public class FourBar extends Subsystem {
 
   public boolean isAtBottom()
   {
-    return !limitSwitch.get();
+    return limitSwitch.get();
   }
 
   /**
