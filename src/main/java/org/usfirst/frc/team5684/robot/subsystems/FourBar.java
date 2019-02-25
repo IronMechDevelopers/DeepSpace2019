@@ -9,7 +9,6 @@ package org.usfirst.frc.team5684.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5684.robot.RobotMap;
-import org.usfirst.frc.team5684.robot.commands.ManualControl;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;

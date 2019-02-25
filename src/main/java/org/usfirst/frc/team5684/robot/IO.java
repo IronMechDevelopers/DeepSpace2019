@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team5684.robot;
 
-import org.usfirst.frc.team5684.robot.commands.BallOut;
 import org.usfirst.frc.team5684.robot.commands.FlopDown;
 import org.usfirst.frc.team5684.robot.commands.FlopUp;
 import org.usfirst.frc.team5684.robot.commands.FourBarDown;

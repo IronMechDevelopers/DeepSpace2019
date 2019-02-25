@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 
 /**

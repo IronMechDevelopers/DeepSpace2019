@@ -9,7 +9,6 @@ package org.usfirst.frc.team5684.robot.subsystems;
 
 import org.usfirst.frc.team5684.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,9 +17,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class BallIntake extends Subsystem {
     private Victor ballMotor;
-    private Victor flopper;
-    private Victor flopWheels;
-    private double flopperSpeed=.1;
     private double flopperWheelsSpeed=1;
 
     

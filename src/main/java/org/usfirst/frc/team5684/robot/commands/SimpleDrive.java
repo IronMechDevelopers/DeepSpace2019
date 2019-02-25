@@ -42,8 +42,7 @@ public class SimpleDrive extends Command {
 	 RobotMap.updateStats();
 	double leftInput = left.getRawAxis(1);
 	double rightInput = right.getRawAxis(0);
-	double tempRightInput = right.getRawAxis(1);
-	if(leftInput>0 && leftInput>DEADZONE)
+		if (leftInput > 0 && leftInput > DEADZONE)
 	{
 		leftInput=Robot.map(leftInput,DEADZONE,1,0,1);
 	}
