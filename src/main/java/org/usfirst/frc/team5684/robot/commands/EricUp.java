@@ -7,19 +7,13 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import org.usfirst.frc.team5684.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class TotalFlopOut extends CommandGroup {
-  /**
-   * Add your docs here.
-   */
-  public TotalFlopOut() {
-
-    addSequential(new SaveFourBarHeight());
-    addSequential(new FourBarClear());
-    addSequential(new FlopDown(),.25);
-    addSequential(new FourBarToHeight(RobotMap.FOURBARHEIGHT));
+public class EricUp extends CommandGroup {
+  public EricUp() {
+    addSequential(new ManualControl());
+    addSequential(new EricUp());
   }
+
+
 }

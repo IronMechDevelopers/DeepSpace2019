@@ -32,6 +32,7 @@ public class Flopper extends Subsystem {
   public Flopper() {
    intakeMotor = new Victor(RobotMap.FLOPPERINTAKE);
    flopperMotor = new Victor(RobotMap.FLOPPER);
+   intakeMotor.setInverted(true);
   }
   public void FlopUp()
   {

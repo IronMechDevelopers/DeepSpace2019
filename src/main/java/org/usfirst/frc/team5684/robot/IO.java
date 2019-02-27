@@ -15,6 +15,7 @@ import org.usfirst.frc.team5684.robot.commands.FourBarUp;
 import org.usfirst.frc.team5684.robot.commands.HatchDown;
 import org.usfirst.frc.team5684.robot.commands.HatchUp;
 import org.usfirst.frc.team5684.robot.commands.ManualControl;
+import org.usfirst.frc.team5684.robot.commands.ManualFlop;
 import org.usfirst.frc.team5684.robot.commands.ShiftDown;
 import org.usfirst.frc.team5684.robot.commands.SwitchCamera;
 import org.usfirst.frc.team5684.robot.commands.TotalBallIn;
@@ -41,16 +42,11 @@ public class IO {
 
 	//private Button gyroCalib = new JoystickButton(leftStick, 1);
 
-	// FourBar
-	private Button armUp = new JoystickButton(coStick, 6);
-	private Button armDown = new JoystickButton(coStick, 7);
 
 	// Hatch
 	private Button hatchUp = new JoystickButton(rightStick, 4);
 	private Button hatchDown = new JoystickButton(rightStick, 6);
 
-	private Button coHatchDown = new JoystickButton(coStick, 10);
-	private Button coHatchUp = new JoystickButton(coStick, 11);
 
 	// Ball Intake
 	private Button ballIn = new JoystickButton(rightStick,5);
@@ -60,10 +56,10 @@ public class IO {
 	private Button switchCamera = new JoystickButton(rightStick, 1);
 
 	// Flopper
-	private Button flopIn = new JoystickButton(coStick, 3 );
-	private Button flopOut = new JoystickButton(coStick, 2 );
-	private Button flopUp = new JoystickButton(leftStick, 4);
-	private Button flopDown = new JoystickButton(leftStick, 5);
+	private Button flopUp = new JoystickButton(coStick, 10 );
+	private Button flopDown = new JoystickButton(coStick, 11 );
+	private Button mannualOut = new JoystickButton(leftStick, 7);
+	private Button mannualIn = new JoystickButton(leftStick, 6);
 
 	private Button manualControl = new JoystickButton(coStick, 1);
 
@@ -78,14 +74,10 @@ public class IO {
 	
 	public IO() {
 
-	armUp.whileHeld(new FourBarUp());
-	armDown.whileHeld(new FourBarDown());
 	ballIn.whileHeld(new TotalBallIn());
 	ballOut.whileHeld(new TotalBallOut());
 	hatchDown.whileHeld(new HatchDown());
 	hatchUp.whileHeld(new HatchUp());
-	coHatchDown.whileHeld(new HatchDown());
-	coHatchUp.whileHeld(new HatchUp());
 	midRocket.whenPressed(new FourBarToHeight(RobotMap.MIDDLECARGOHOLEROCKET));
 	bottomRocket.whenPressed(new FourBarToHeight(RobotMap.BOTTOMCARGOHOLEROCKET));
 	ground.whenPressed(new FourBarToHeight(3 * RobotMap.INCHES));
@@ -93,12 +85,11 @@ public class IO {
 	manualControl.whileHeld(new ManualControl());
 	unlock.whenPressed(new Unlock());
 	switchCamera.whenPressed(new SwitchCamera());
-	flopIn.whileHeld(new TotalFlopIn());
-	flopOut.whileHeld(new TotalFlopOut());
+	mannualOut.whileHeld(new ManualFlop(1));
+	mannualIn.whileHeld(new ManualFlop(0));
 	flopUp.whileHeld(new FlopUp());
 	flopDown.whileHeld(new FlopDown());
 	}
-	
 	
 }
 

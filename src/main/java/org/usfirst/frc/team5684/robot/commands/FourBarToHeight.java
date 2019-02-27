@@ -95,7 +95,7 @@ public class FourBarToHeight extends Command {
     }
       if (Robot.fourBar.getHeight()>=RobotMap.MAXFOURBARHIEGHT ||Robot.fourBar.getHeight()<=RobotMap.MINFOURBARHEIGHT )
       {
-        System.out.println("Stopped for saftey reasons");
+        System.out.println("Stopped for safety reasons");
       return true;
       }
     return false;

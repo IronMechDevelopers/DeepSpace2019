@@ -18,7 +18,7 @@ public class TotalFlopIn extends CommandGroup {
   public TotalFlopIn() {
     addSequential(new SaveFourBarHeight());
     addSequential(new FourBarClear());
-    addSequential(new FlopIn());
+    addSequential(new FlopUp(),.25);
     addSequential(new FourBarToHeight(RobotMap.FOURBARHEIGHT));
   }
 }

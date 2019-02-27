@@ -14,6 +14,7 @@ public class FlopOut extends Command {
   public FlopOut() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.flop);
   }
 
   // Called just before this Command runs the first time
@@ -30,13 +31,13 @@ public class FlopOut extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.flop.isFlopperUp();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.flop.FlopOut();
+    Robot.flop.killBoth();
   }
 
   // Called when another command which requires one or more of the same
