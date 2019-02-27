@@ -22,7 +22,7 @@ public class Flopper extends Subsystem {
   // here. Call these from Commands.
   private Victor intakeMotor;
   private Victor flopperMotor;
-  private double flopperSpeed = .1;
+  private double flopperSpeed = .6;
   private double intakeSpeed = 1;
   private DigitalInput limitSwitchUp = new DigitalInput(RobotMap.LINITFLOPPERUP);
   private DigitalInput limitSwitchDown = new DigitalInput(RobotMap.LINITFLOPPERDOWN);

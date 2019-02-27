@@ -20,8 +20,8 @@ import org.usfirst.frc.team5684.robot.commands.ShiftDown;
 import org.usfirst.frc.team5684.robot.commands.SwitchCamera;
 import org.usfirst.frc.team5684.robot.commands.TotalBallIn;
 import org.usfirst.frc.team5684.robot.commands.TotalBallOut;
-import org.usfirst.frc.team5684.robot.commands.TotalFlopIn;
-import org.usfirst.frc.team5684.robot.commands.TotalFlopOut;
+import org.usfirst.frc.team5684.robot.commands.TotalFlopDown;
+import org.usfirst.frc.team5684.robot.commands.TotalFlopUp;
 import org.usfirst.frc.team5684.robot.commands.Unlock;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -87,8 +87,8 @@ public class IO {
 	switchCamera.whenPressed(new SwitchCamera());
 	mannualOut.whileHeld(new ManualFlop(1));
 	mannualIn.whileHeld(new ManualFlop(0));
-	flopUp.whileHeld(new FlopUp());
-	flopDown.whileHeld(new FlopDown());
+	flopUp.whileHeld(new TotalFlopUp());
+	flopDown.whileHeld(new TotalFlopDown());
 	}
 	
 }

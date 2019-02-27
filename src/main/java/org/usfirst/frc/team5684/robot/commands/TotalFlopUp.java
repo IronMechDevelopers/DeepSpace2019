@@ -11,15 +11,14 @@ import org.usfirst.frc.team5684.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class TotalFlopOut extends CommandGroup {
+public class TotalFlopUp extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public TotalFlopOut() {
-
+  public TotalFlopUp() {
     addSequential(new SaveFourBarHeight());
     addSequential(new FourBarClear());
-    addSequential(new FlopDown(),.25);
+    addSequential(new FlopUp(),.25);
     addSequential(new FourBarToHeight(RobotMap.FOURBARHEIGHT));
   }
 }

@@ -85,6 +85,12 @@ public class RobotMap {
 		SmartDashboard.putNumber("tinyGyro",Robot.driveTrain.getTinyAngle());
 
 		SmartDashboard.putNumber("GEAR",RobotMap.GEAR);
+
+		boolean isDown = Robot.flop.isFlopperDown();
+		boolean isUp= Robot.flop.isFlopperUp();
+
+		SmartDashboard.putBoolean("UP: ",isUp);
+		SmartDashboard.putBoolean("Down: ",isDown);
 	}
 
 }
