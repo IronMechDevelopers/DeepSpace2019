@@ -56,9 +56,10 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		cam1 = CameraServer.getInstance().startAutomaticCapture(0);
-		cam2 = CameraServer.getInstance().startAutomaticCapture(1);
+		//cam2 = CameraServer.getInstance().startAutomaticCapture(1);
+		cam1.setResolution(15, 15);
 		cam1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
-		cam2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+		//cam2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
 		CameraServer.getInstance().getServer().setSource(cam1);
 	}
 

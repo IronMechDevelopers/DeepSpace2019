@@ -7,11 +7,7 @@
 
 package org.usfirst.frc.team5684.robot;
 
-import org.usfirst.frc.team5684.robot.commands.FlopDown;
-import org.usfirst.frc.team5684.robot.commands.FlopUp;
-import org.usfirst.frc.team5684.robot.commands.FourBarDown;
 import org.usfirst.frc.team5684.robot.commands.FourBarToHeight;
-import org.usfirst.frc.team5684.robot.commands.FourBarUp;
 import org.usfirst.frc.team5684.robot.commands.HatchDown;
 import org.usfirst.frc.team5684.robot.commands.HatchUp;
 import org.usfirst.frc.team5684.robot.commands.ManualControl;
@@ -58,8 +54,8 @@ public class IO {
 	// Flopper
 	private Button flopUp = new JoystickButton(coStick, 10 );
 	private Button flopDown = new JoystickButton(coStick, 11 );
-	private Button mannualOut = new JoystickButton(leftStick, 7);
-	private Button mannualIn = new JoystickButton(leftStick, 6);
+	private Button mannualDown = new JoystickButton(coStick, 7);
+	private Button mannualUp = new JoystickButton(coStick, 6);
 
 	private Button manualControl = new JoystickButton(coStick, 1);
 
@@ -85,10 +81,10 @@ public class IO {
 	manualControl.whileHeld(new ManualControl());
 	unlock.whenPressed(new Unlock());
 	switchCamera.whenPressed(new SwitchCamera());
-	mannualOut.whileHeld(new ManualFlop(1));
-	mannualIn.whileHeld(new ManualFlop(0));
-	flopUp.whileHeld(new TotalFlopUp());
-	flopDown.whileHeld(new TotalFlopDown());
+	mannualDown.whileHeld(new ManualFlop(0));
+	mannualUp.whileHeld(new ManualFlop(1));
+	//flopUp.whenPressed(new TotalFlopUp());
+	//flopDown.whenPressed(new TotalFlopDown());
 	}
 	
 }

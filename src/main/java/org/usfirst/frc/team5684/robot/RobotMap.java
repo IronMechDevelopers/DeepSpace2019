@@ -18,11 +18,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 
 	// PWM Ports
+	public static final int HATCH = 1;
 	public static final int FOURBAR = 2;
 	public static final int BALLINTAKE=3;
-	public static final int HATCH = 1;
-	public static final int FLOPPER = 5;
-	public static final int FLOPPERINTAKE = 4;
+	public static final int FLOPPERINTAKE = 5;
+	public static final int FLOPPER = 4;
 
 	//CAN ID's
 	public static final int RIGHTMASTER = 0;
@@ -82,7 +82,7 @@ public class RobotMap {
 		SmartDashboard.putNumber("leftDistance", Robot.driveTrain.getLeftEncoder().getDistance());
 		SmartDashboard.putNumber("rightDistance", Robot.driveTrain.getRightEncoder().getDistance());
 		SmartDashboard.putNumber("fourBar", Robot.fourBar.getHeight() * 12);
-		SmartDashboard.putNumber("tinyGyro",Robot.driveTrain.getTinyAngle());
+		SmartDashboard.putNumber("tinyGyro",Robot.driveTrain.getAngle());
 
 		SmartDashboard.putNumber("GEAR",RobotMap.GEAR);
 

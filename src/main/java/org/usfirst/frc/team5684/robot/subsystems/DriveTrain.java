@@ -181,13 +181,6 @@ public class DriveTrain extends Subsystem {
 
 	public double getAngle()
 	{
-		// SmartDashboard.putNumber("TIME", System.currentTimeMillis());
-		// SmartDashboard.putNumber("MINI", mini_gyro.getAngle());
-		// SmartDashboard.putNumber("BIG", imu.getAngle());
-		// SmartDashboard.putNumber("BIGX", imu.getAngleX());
-		// SmartDashboard.putNumber("BIGY", imu.getAngleY());
-		// SmartDashboard.putNumber("BIGZ", imu.getAngleZ());
-		// return imu.getAngleX();
 		return mini_gyro.getAngle();
 	}
 
