@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
 	public static IO m_oi = new IO();
 	public static UsbCamera cam1;
 	public static UsbCamera cam2;
+	public static Object lefttrain;
 
 	
 	

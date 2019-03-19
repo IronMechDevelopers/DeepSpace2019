@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5684.robot;
 
+import org.usfirst.frc.team5684.robot.commands.DriveStraight;
 import org.usfirst.frc.team5684.robot.commands.FourBarToHeight;
 import org.usfirst.frc.team5684.robot.commands.HatchDown;
 import org.usfirst.frc.team5684.robot.commands.HatchUp;
@@ -36,8 +37,7 @@ public class IO {
 	public static final Joystick leftStick = new Joystick(0);
 	public static final Joystick rightStick = new Joystick(2);
 
-	//private Button gyroCalib = new JoystickButton(leftStick, 1);
-
+	private Button driveStraight = new JoystickButton(rightStick, 2);
 
 	// Hatch
 	private Button hatchUp = new JoystickButton(rightStick, 4);
@@ -85,6 +85,7 @@ public class IO {
 	mannualUp.whileHeld(new ManualFlop(1));
 	//flopUp.whenPressed(new TotalFlopUp());
 	//flopDown.whenPressed(new TotalFlopDown());
+	driveStraight.whileHeld(new DriveStraight());
 	}
 	
 }

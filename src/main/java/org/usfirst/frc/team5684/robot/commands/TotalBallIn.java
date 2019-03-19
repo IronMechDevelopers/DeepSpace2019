@@ -14,8 +14,6 @@ public class TotalBallIn extends CommandGroup {
    * Add your docs here.
    */
   public TotalBallIn() {
-    
-    
     addParallel(new BallIn());
     addParallel(new FlopIn());
   }

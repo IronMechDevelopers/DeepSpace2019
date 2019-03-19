@@ -17,6 +17,7 @@ import org.usfirst.frc.team5684.robot.commands.SimpleDrive;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -62,6 +63,7 @@ public class DriveTrain extends Subsystem {
 		rightMaster.setNeutralMode(NeutralMode.Brake);
 		leftSlave.setNeutralMode(NeutralMode.Brake);
 		rightSlave.setNeutralMode(NeutralMode.Brake);
+
 
 		leftSlave.follow(leftMaster);
 		
@@ -125,6 +127,14 @@ public class DriveTrain extends Subsystem {
 		leftMaster.set(ControlMode.PercentOutput,leftSpeed);
 		rightMaster.set(ControlMode.PercentOutput,rightSpeed);
 
+	}
+
+	public void DriveStraight(double power, double turn_power)
+	{
+		 power  = power * RobotMap.GEAR;
+		 turn_power = turn_power * RobotMap.GEAR;
+		leftMaster.set(ControlMode.PercentOutput,power+turn_power);
+		rightMaster.set(ControlMode.PercentOutput,power-turn_power);
 	}
 
 	public void stop() {
