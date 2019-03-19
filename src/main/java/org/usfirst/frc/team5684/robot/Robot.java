@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
 		cam1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
 		//cam2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
 		CameraServer.getInstance().getServer().setSource(cam1);
+		
 	}
 
 	/**
