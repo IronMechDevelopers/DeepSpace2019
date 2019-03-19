@@ -26,7 +26,6 @@ public class BallIntake extends Subsystem {
     
       ballMotor = new Victor(RobotMap.BALLINTAKE);
       ballMotor.setInverted(!ballMotor.getInverted());
-   
     }
     
     
