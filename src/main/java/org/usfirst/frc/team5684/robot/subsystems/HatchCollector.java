@@ -27,7 +27,7 @@ private Spark hatchMotor;
 
   public void HatchUp() {
 
-    hatchMotor.set(.60);
+    hatchMotor.set(.80);
   }
   public void HatchDown() {
 

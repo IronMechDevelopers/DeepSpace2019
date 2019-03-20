@@ -37,7 +37,7 @@ public class IO {
 	public static final Joystick leftStick = new Joystick(0);
 	public static final Joystick rightStick = new Joystick(2);
 
-	private Button driveStraight = new JoystickButton(rightStick, 2);
+	private Button driveStraight = new JoystickButton(leftStick, 1);
 
 	// Hatch
 	private Button hatchUp = new JoystickButton(rightStick, 4);
@@ -63,7 +63,7 @@ public class IO {
 	private Button midRocket = new JoystickButton(leftStick, 7);
 	private Button bottomRocket = new JoystickButton(leftStick, 9);
 	private Button ground = new JoystickButton(leftStick, 11);
-	private Button gear = new JoystickButton(rightStick,2);
+	private Button gear = new JoystickButton(rightStick, 2);
 
 	// Misc
 	private Button unlock = new JoystickButton(coStick,8);
