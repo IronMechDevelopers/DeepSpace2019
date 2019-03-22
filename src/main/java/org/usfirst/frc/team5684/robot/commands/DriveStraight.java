@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveStraight extends Command {
-  private double kP=.03;
+  private double kP=.01;
     private Joystick gas;
   public DriveStraight() {
     
@@ -35,6 +35,9 @@ public class DriveStraight extends Command {
   @Override
   protected void execute() {
     double error = Robot.driveTrain.getLeftEncoder().getDistance() -Robot.driveTrain.getRightEncoder().getDistance();
+    System.out.print("RIGHT: " + Robot.driveTrain.getRightEncoder().getDistance());
+    System.out.print("\tLeft: " + Robot.driveTrain.getLeftEncoder().getDistance());
+    System.out.println("\tERROR: " + error);
     double turn_power = kP * error;
     double power = gas.getRawAxis(1);
     Robot.driveTrain.DriveStraight(-1*power, turn_power);
