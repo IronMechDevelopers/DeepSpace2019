@@ -146,6 +146,8 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+*.gradle
+*.bat
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
@@ -155,6 +157,10 @@ gradle-app.setting
 .project
 .settings/
 bin/
+.vscode/
+.wpilib/
+vendordeps/
+.gradle/
 
 
 # End of https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode
