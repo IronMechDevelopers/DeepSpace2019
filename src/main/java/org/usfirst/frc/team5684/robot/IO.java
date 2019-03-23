@@ -20,6 +20,7 @@ import org.usfirst.frc.team5684.robot.commands.TotalBallOut;
 import org.usfirst.frc.team5684.robot.commands.TotalFlopDown;
 import org.usfirst.frc.team5684.robot.commands.TotalFlopUp;
 import org.usfirst.frc.team5684.robot.commands.Unlock;
+import org.usfirst.frc.team5684.robot.commands.holdFourBar;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -58,6 +59,7 @@ public class IO {
 	private Button mannualUp = new JoystickButton(coStick, 6);
 
 	private Button manualControl = new JoystickButton(coStick, 1);
+	private Button holdHeight = new JoystickButton(coStick, 10);
 
 	// Preset Heights
 	private Button midRocket = new JoystickButton(leftStick, 7);
@@ -86,6 +88,7 @@ public class IO {
 	//flopUp.whenPressed(new TotalFlopUp());
 	//flopDown.whenPressed(new TotalFlopDown());
 	driveStraight.whileHeld(new DriveStraight());
+	holdHeight.toggleWhenPressed(new holdFourBar());
 	}
 	
 }
