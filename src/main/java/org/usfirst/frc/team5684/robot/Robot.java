@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5684.robot;
 
 import org.usfirst.frc.team5684.robot.subsystems.BallIntake;
+import org.usfirst.frc.team5684.robot.subsystems.Dart;
 import org.usfirst.frc.team5684.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5684.robot.subsystems.FourBar;
 import org.usfirst.frc.team5684.robot.subsystems.HatchCollector;
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
 	public static UsbCamera cam1;
 	public static UsbCamera cam2;
 	public static Object lefttrain;
+	public static Dart dart = new Dart();
 
 	
 	

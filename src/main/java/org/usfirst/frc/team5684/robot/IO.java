@@ -88,7 +88,7 @@ public class IO {
 	//flopUp.whenPressed(new TotalFlopUp());
 	//flopDown.whenPressed(new TotalFlopDown());
 	driveStraight.whileHeld(new DriveStraight());
-	holdHeight.toggleWhenPressed(new holdFourBar());
+	holdHeight.whileHeld(new holdFourBar());
 	}
 	
 }

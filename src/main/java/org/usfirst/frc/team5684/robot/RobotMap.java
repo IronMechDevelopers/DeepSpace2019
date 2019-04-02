@@ -23,6 +23,7 @@ public class RobotMap {
 	public static final int BALLINTAKE=3;
 	public static final int FLOPPERINTAKE = 5;
 	public static final int FLOPPER = 4;
+	public static final int DART = 5;
 
 	//CAN ID's
 	public static final int RIGHTMASTER = 0;
@@ -64,6 +65,9 @@ public class RobotMap {
 	public static double GEAR=1;
 	public static boolean LOCK=true;
 	public static double FOURBARHEIGHT=0;
+	public static final double DARTSPEED=.1;
+	public static final double DARTMAX=0;
+	public static final double DARTMIN=0;
 	
 
 

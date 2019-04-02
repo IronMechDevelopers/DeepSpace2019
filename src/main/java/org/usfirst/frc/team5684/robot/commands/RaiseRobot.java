@@ -7,47 +7,38 @@
 
 package org.usfirst.frc.team5684.robot.commands;
 
-import org.usfirst.frc.team5684.robot.IO;
 import org.usfirst.frc.team5684.robot.Robot;
+import org.usfirst.frc.team5684.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class holdFourBar extends Command {
-  private double delta;
-  private double speed=.04;
-  private Joystick control;
-  
-  public holdFourBar() {
+public class RaiseRobot extends Command {
+  public RaiseRobot() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.fourBar);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    control=IO.coStick;
-    //speed = control.getRawAxis(1);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("HOLDING AT : " + speed);
-    Robot.fourBar.set(speed);
+    Robot.dart.dartOut();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.dart.readPot()>=RobotMap.DARTMAX;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.fourBar.set(0);
+    Robot.dart.stopDart();
   }
 
   // Called when another command which requires one or more of the same
